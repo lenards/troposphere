@@ -80,3 +80,5 @@ extras/newrelic
 extras/nginx/Makefile
 extras/nginx/site.conf
 extras/nginx/locations/tropo.conf
+# generated reports for Nightwatch/Selenium
+reports

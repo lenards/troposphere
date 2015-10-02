@@ -16,10 +16,11 @@
     "unsafe-perm": true
   },
   "scripts": {
-    "dev" : "webpack -d --progress --profile --colors --",
-    "build": "webpack --progress --profile --colors --",
+    "dev": "webpack -d --progress --profile --colors --bail --",
+    "build": "webpack --progress --profile --colors --bail --",
     "jenkins": "webpack --profile --colors --",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "verify": "nightwatch -e default",
     "lint": "eslint"
   },
   "dependencies": {
@@ -55,6 +56,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "imports-loader": "^0.6.4",
+    "nightwatch": "^0.8.3",
     "node-sass": "^3.2.0",
     "sass-loader": "^1.0.3",
     "sinon": "~1.10.3",
