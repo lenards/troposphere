@@ -45,6 +45,8 @@ define(function (require) {
     ResourceMaster = require('./components/admin/ResourceMaster.react'),
     ResourceRequest = require('./components/admin/ResourceRequest.react');
 
+var CommunityActivityPage = require('./components/images/CommunityActivityPage.react');
+
   var AppRoutes = (
     <Route name="root" path="/application" handler={Master}>
       <Route name="dashboard" handler={DashboardPage}/>
@@ -69,6 +71,7 @@ define(function (require) {
         <Route name="my-image-requests" handler={MyImageRequestsPage}/>
         <Route name="tags" handler={ImageTagsPage}/>
         <Route name="image-details" path=":imageId" handler={ImageDetailsPage}/>
+        <Route name="community-activity" handler={CommunityActivityPage}/>
       </Route>
 
       <Route name="providers" handler={ProvidersMaster}>

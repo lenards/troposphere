@@ -50,6 +50,7 @@ define(function (require) {
                 {this.renderRoute(myImagesText, "authored", "user", true)}
                 {this.renderRoute("My Image Requests", "my-image-requests", "export", true)}
                 {this.renderRoute("Tags", "tags", "tags", false)}
+                {this.renderRoute("Activity", "community-activity", "flash", true)}
               </ul>
             </div>
           </div>
