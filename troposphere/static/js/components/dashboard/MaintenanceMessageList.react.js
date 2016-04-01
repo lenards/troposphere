@@ -29,15 +29,15 @@ define(
       },
 
       render: function () {
-        var notifications = [];
-        var maintenanceNotifications = this.props.messages.map(this.renderMaintenanceNotification);
+        //var notifications = [];
+        //var maintenanceNotifications = this.props.messages.map(this.renderMaintenanceNotification);
         var imageNotifications = this.props.images.slice(0,11).map(this.renderImageNotification);
-        notifications = notifications.concat(maintenanceNotifications, imageNotifications);
+        //notifications = notifications.concat(maintenanceNotifications, imageNotifications);
 
-        if (notifications.length > 0) {
+        if (imageNotifications.length > 0) {
           return (
             <ul className="notifications">
-              {notifications}
+              {imageNotifications}
             </ul>
           );
         } else {
@@ -45,7 +45,7 @@ define(
             <ul className="notifications">
               <div className="preview-message">
                 <span className="message">
-                  You will see a notification here when Atmosphere is scheduled to go down for maintenance.
+                  No recent activity...
                 </span>
               </div>
             </ul>

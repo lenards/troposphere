@@ -70,8 +70,8 @@ var CommunityActivityPage = require('./components/images/CommunityActivityPage.r
         <Route name="authored" handler={MyImagesPage}/>
         <Route name="my-image-requests" handler={MyImageRequestsPage}/>
         <Route name="tags" handler={ImageTagsPage}/>
-        <Route name="image-details" path=":imageId" handler={ImageDetailsPage}/>
         <Route name="community-activity" handler={CommunityActivityPage}/>
+        <Route name="image-details" path=":imageId" handler={ImageDetailsPage}/>
       </Route>
 
       <Route name="providers" handler={ProvidersMaster}>

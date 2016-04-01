@@ -12,10 +12,13 @@ export default React.createClass({
         if (!images || !maintenanceMessages) {
             return <div className='loading'></div>;
         }
+
         return (
-            <MaintenanceMessageList
-                messages={maintenanceMessages}
-                images={images}/>
+            <div className="col-md-12 community-activity">
+                <MaintenanceMessageList
+                    messages={maintenanceMessages}
+                    images={images}/>
+            </div>
         );
     },
 

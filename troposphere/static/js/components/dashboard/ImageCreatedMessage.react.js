@@ -24,13 +24,14 @@ define(function (require) {
               <i className="glyphicon glyphicon-floppy-disk"></i>
             </div>
             <div className="details">
-              <div><strong>{user.username}</strong> created an image</div>
-              <div>{startDate.format("MMM DD, YYYY hh:mm a")}</div>
               <div>
+                <strong>{user.username}</strong>
+                {` created an image, `}
                 <Router.Link to="image-details" params={{imageId: image.id}}>
                   {image.get('name')}
                 </Router.Link>
               </div>
+              <div>{startDate.format("MMM DD, YYYY hh:mm a")}</div>
             </div>
           </div>
         </li>
