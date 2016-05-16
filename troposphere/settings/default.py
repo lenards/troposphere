@@ -173,3 +173,19 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'iplantauth.authBackends.OAuthLoginBackend'
 )
+
+# Sentry is an error logging & capture application.
+#
+# Use the _enabled_ flag to capture errors w/ the raven-js library
+# - flag here end up being populated in index.html & read by the
+#   global.js module
+#
+RAVEN_CONFIG = {
+    'enabled': True,
+    'dsn': 'https://27643f06676048be96ad6df686c17da3@app.getsentry.com/73366',
+    # https://docs.getsentry.com/hosted/clients/python/integrations/django/#additional-settings
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    #'release': raven.fetch_git_sha(os.path.dirname(__file__)),
+    'release': '6a34f86c188811e698eb0242ac130001'
+}

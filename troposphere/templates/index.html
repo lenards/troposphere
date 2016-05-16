@@ -46,6 +46,12 @@
     var intercom_company_name = "{{ intercom_company_name }}";
 {% endif %}
 
+{% if SENTRY_ENABLED %}
+    var SENTRY_ENABLED = {{SENTRY_ENABLED}};
+    var SENTRY_DSN = "{{ SENTRY_DSN }}";
+    var RELEASE = "{{ RELEASE }}";
+{% endif %}
+
     var BASE_URL = "{{ BASE_URL }}";
 
     var THEME_URL = "{{ THEME_URL }}";
