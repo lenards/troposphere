@@ -123,6 +123,12 @@ def _populate_template_params(request, maintenance_records, disabled_login, publ
         template_params['USE_GATE_ONE_API'] = settings.USE_GATE_ONE_API
         template_params['WEB_SH_URL'] = settings.WEB_SH_URL
 
+    if hasattr(settings, "RAVEN_CONFIG"):
+        template_params['SENTRY_ENABLED'] = \
+            str(settings.RAVEN_CONFIG['enabled']).lower()
+        template_params['SENTRY_DSN'] = settings.RAVEN_CONFIG['dsn']
+        template_params['RELEASE'] = settings.RAVEN_CONFIG['release']
+
     return template_params, show_troposphere_only
 
 

@@ -19,7 +19,10 @@ define(function (require) {
         SUPPORT_EMAIL: window.SUPPORT_EMAIL || 'support@iplantcollaborative.org',
         TZ_REGION: tz_region,
         BADGE_HOST: window.BADGE_HOST,
-        BADGES_ENABLED: window.BADGES_ENABLED || false
+        BADGES_ENABLED: window.BADGES_ENABLED || false,
+        SENTRY_ENABLED: window.SENTRY_ENABLED || false,
+        SENTRY_DSN: window.SENTRY_DSN || null,
+        RELEASE: window.RELEASE || '0.0.0'
     }
 
 });

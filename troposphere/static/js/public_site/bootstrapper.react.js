@@ -7,6 +7,12 @@ define(function (require) {
         Router = require('../Router'),
         routes = require('./AppRoutes.react');
 
+    var errorLogging = require('../utilities/errorLogging');
+    debugger;
+    // install Sentry's client-side error logging library
+    errorLogging.init();
+
+
     var modals = require('modals');
     modals.PublicModals = require('modals/PublicModals');
 

@@ -8,7 +8,8 @@ define(function (require) {
     SplashScreen = require('components/SplashScreen.react'),
     MaintenanceScreen = require('components/MaintenanceScreen.react'),
     FunctionalCollection = require('collections/FunctionalCollection'),
-    modernizr = require('lib/modernizr-latest.js');
+    modernizr = require('lib/modernizr-latest.js'),
+    errorLogging = require('utilities/errorLogging');
 
   // Disconnect all Backbone Events from Models and Collections
   Object.keys(Backbone.Events).forEach(function (functionName) {
@@ -30,6 +31,8 @@ define(function (require) {
       //return model.id == String(obj) || model.id === String(obj.id) || model.cid === obj.cid;
     });
   };
+
+  errorLogging.init();
 
   // Extend the base collection to include useful functions
   _.extend(Backbone.Collection.prototype, FunctionalCollection);
