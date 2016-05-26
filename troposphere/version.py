@@ -13,7 +13,7 @@ def git_info():
     loc = abspath(dirname(__file__))
     try:
         p = Popen(
-            "cd \"%s\" && git log -1 --format=format:%%H%%ci" % loc,
+            "cd \"{0!s}\" && git log -1 --format=format:%H%ci".format(loc),
             shell=True,
             stdout=PIPE,
             stderr=PIPE

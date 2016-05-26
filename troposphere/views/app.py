@@ -108,7 +108,7 @@ def _populate_template_params(request, maintenance_records, disabled_login, publ
 
     #TODO: Replace this line when theme support is re-enabled.
     #template_params["THEME_URL"] = "assets/"
-    template_params['THEME_URL'] = "/themes/%s" % settings.THEME_NAME
+    template_params['THEME_URL'] = "/themes/{0!s}".format(settings.THEME_NAME)
     template_params['ORG_NAME'] = settings.ORG_NAME
 
     if hasattr(settings, "BASE_URL"):
@@ -150,7 +150,7 @@ def _handle_public_application_request(request, maintenance_records, disabled_lo
             maintenance_records, disabled_login, True)
 
     if 'new_relic_enabled' in template_params:
-        logger.info("New Relic enabled? %s" % template_params['new_relic_enabled'])
+        logger.info("New Relic enabled? {0!s}".format(template_params['new_relic_enabled']))
     else:
         logger.info("New Relic key missing from `template_params`")
 
@@ -190,7 +190,7 @@ def _handle_public_application_request(request, maintenance_records, disabled_lo
         request.META['REMOTE_ADDR'] == '127.0.0.1'):
         logger.info("REQUEST ******************** \n")
         for key in request.session.keys():
-            logger.info(" - %s => %s" % (key, request.session[key]))
+            logger.info(" - {0!s} => {1!s}".format(key, request.session[key]))
         logger.info(request.COOKIES)
         logger.info(request.META['REMOTE_ADDR'])
         logger.info(request.user.username)
@@ -215,7 +215,7 @@ def _handle_authenticated_application_request(request, maintenance_records):
     prefs_modified = False
 
     if 'new_relic_enabled' in template_params:
-        logger.info("New Relic enabled? %s" % template_params['new_relic_enabled'])
+        logger.info("New Relic enabled? {0!s}".format(template_params['new_relic_enabled']))
     else:
         logger.info("New Relic key missing from `template_params`")
 
@@ -265,7 +265,7 @@ def _handle_authenticated_application_request(request, maintenance_records):
         request.META['REMOTE_ADDR'] == '127.0.0.1'):
         logger.info("REQUEST ******************** \n")
         for key in request.session.keys():
-            logger.info(" - %s => %s" % (key, request.session[key]))
+            logger.info(" - {0!s} => {1!s}".format(key, request.session[key]))
         logger.info(request.COOKIES)
         logger.info(request.META['REMOTE_ADDR'])
         logger.info(request.user.username)
@@ -286,7 +286,7 @@ def application_backdoor(request):
         return redirect('application')
 
     if request.user.is_authenticated() and request.user.username not in STAFF_LIST_USERNAMES:
-        logger.warn('[Backdoor] %s is NOT in staff_list_usernames' % request.user.username)
+        logger.warn('[Backdoor] {0!s} is NOT in staff_list_usernames'.format(request.user.username))
         return redirect('maintenance')
 
     # route a potential VIP to login
@@ -297,7 +297,7 @@ def application_backdoor(request):
         'bsp': 'true'
     }
     # I'm on the Guest List! Backstage Pass!
-    return redirect('/login?%s' % (urlencode(query_arguments),))
+    return redirect('/login?{0!s}'.format(urlencode(query_arguments)))
 
 
 
@@ -306,8 +306,7 @@ def application(request):
         get_maintenance(request)
 
     if should_route_to_maintenace(request, in_maintenance):
-        logger.warn('%s has actice session but is NOT in staff_list_usernames'
-            % request.user.username)
+        logger.warn('{0!s} has actice session but is NOT in staff_list_usernames'.format(request.user.username))
         logger.warn('- routing user')
         return redirect('maintenance')
 
@@ -326,7 +325,7 @@ def forbidden(request):
     metadata = get_site_metadata()
     template_params = {}
 
-    template_params['THEME_URL'] = "/themes/%s" % settings.THEME_NAME
+    template_params['THEME_URL'] = "/themes/{0!s}".format(settings.THEME_NAME)
     template_params['ORG_NAME'] = settings.ORG_NAME
     template_params['SITE_TITLE'] = settings.SITE_TITLE
     template_params['SITE_FOOTER'] = settings.SITE_FOOTER

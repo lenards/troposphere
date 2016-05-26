@@ -63,7 +63,7 @@ class MaintenanceRecord(models.Model):
         return disable_login
 
     def __unicode__(self):
-        return '%s (Maintenance Times: %s - %s Login disabled: %s)' % (
+        return '{0!s} (Maintenance Times: {1!s} - {2!s} Login disabled: {3!s})'.format(
             self.title,
             self.start_date,
             self.end_date,
@@ -79,7 +79,7 @@ class UserPreferences(models.Model):
     airport_ui = models.NullBooleanField(default=None, null=True)
 
     def __unicode__(self):
-        return "%s" % self.user.username
+        return "{0!s}".format(self.user.username)
 
 
 portal_link_text_help_text = """

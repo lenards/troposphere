@@ -31,15 +31,13 @@ def _mock_login(request):
 
     if request.session.get('redirect_to'):
         logger.debug("Found `redirect_to` in session... ")
-        logger.debug("Redirecting to: %s" %
-            (request.session.get('redirect_to'),))
+        logger.debug("Redirecting to: {0!s}".format(request.session.get('redirect_to')))
 
         redirect_url = request.session.pop('redirect_to')
         return redirect(redirect_url)
     elif 'redirect_to' in request.GET:
         logger.debug("Found `redirect_to` in GET params... ")
-        logger.debug("Redirecting to: %s" %
-            (request.GET.get('redirect_to'),))
+        logger.debug("Redirecting to: {0!s}".format(request.GET.get('redirect_to')))
 
         redirect_url = request.GET.get('redirect_to')
         return redirect(redirect_url)
@@ -99,11 +97,11 @@ def logout(request):
             if not redirect_to:
                 redirect_to = settings.SERVER_URL + reverse('application')
             logout_url = cas_oauth_client.logout(redirect_to)
-            logger.info("[CAS] Redirect user to: %s" % logout_url)
+            logger.info("[CAS] Redirect user to: {0!s}".format(logout_url))
             return redirect(logout_url)
         elif 'iplantauth.authBackends.GlobusLoginBackend' in all_backends\
           or 'iplantauth.authBackends.GlobusOAuthLoginBackend' in all_backends:
-            logger.info("[Globus] Redirect user to: %s" % logout_url)
+            logger.info("[Globus] Redirect user to: {0!s}".format(logout_url))
             return globus_logout_redirect(request)
     return redirect('application')
 
@@ -128,7 +126,7 @@ def _oauth_login(request):
         request.META['REMOTE_ADDR'] == '127.0.0.1'):
         logger.info("REQUEST ******************** \n")
         for key in request.session.keys():
-            logger.info(" - %s => %s" % (key, request.session[key]))
+            logger.info(" - {0!s} => {1!s}".format(key, request.session[key]))
         logger.info(request.COOKIES)
         logger.info(request.META['REMOTE_ADDR'])
         logger.info(request.user.username)
@@ -171,7 +169,7 @@ def cas_oauth_service(request):
         request.META['REMOTE_ADDR'] == '127.0.0.1'):
         logger.info("REQUEST ******************** \n")
         for key in request.session.keys():
-            logger.info(" - %s => %s" % (key, request.session[key]))
+            logger.info(" - {0!s} => {1!s}".format(key, request.session[key]))
         logger.info(request.COOKIES)
         logger.info(request.META['REMOTE_ADDR'])
         logger.info(request.user.username)
