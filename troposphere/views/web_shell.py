@@ -22,12 +22,12 @@ def _create_signature(secret, *parts):
 def web_shell(request):
     response = HttpResponse()
 
-    logger.info("request.user = %s" % request.user)
-    logger.info("is_auth? %s" % request.user.is_authenticated())
+    logger.info("request.user = {0!s}".format(request.user))
+    logger.info("is_auth? {0!s}".format(request.user.is_authenticated()))
 
     if request.user.is_authenticated():
         logger.info("rendering web_shell template... ")
-        logger.info("request.session: %s" % request.session)
+        logger.info("request.session: {0!s}".format(request.session))
 
         secret = settings.GATE_ONE_API_SECRET
         authobj = {
@@ -60,7 +60,7 @@ def web_shell(request):
                 context_instance=RequestContext(request)
         )
     else:
-        logger.info("not authenticated: \nrequest:\n %s" % request)
+        logger.info("not authenticated: \nrequest:\n {0!s}".format(request))
         raise PermissionDenied
 
     return response

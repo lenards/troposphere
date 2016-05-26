@@ -35,23 +35,21 @@ def emulate(request, username):
     else:
         old_token = request.session['access_token']
 
-    logger.info("[EMULATE]Session_token: %s. Request to emulate %s."
-                % (old_token, username))
+    logger.info("[EMULATE]Session_token: {0!s}. Request to emulate {1!s}.".format(old_token, username))
 
     if hasattr(settings, "EMULATED_SESSION_COOKIE_AGE"):
         request.session.set_expiry(settings.EMULATED_SESSION_COOKIE_AGE)
-        logger.info("[EMULATE]Session length set to: %s seconds"
-            % settings.EMULATED_SESSION_COOKIE_AGE)
+        logger.info("[EMULATE]Session length set to: {0!s} seconds".format(settings.EMULATED_SESSION_COOKIE_AGE))
 
     r = requests.get(
         os.path.join(settings.SERVER_URL,
-                     "api/v1/token_emulate/%s" % username),
+                     "api/v1/token_emulate/{0!s}".format(username)),
         verify=False,
-        headers={'Authorization': 'Token %s' % old_token, 'Accept': 'application/json', 'Content-Type': 'application/json'})
+        headers={'Authorization': 'Token {0!s}'.format(old_token), 'Accept': 'application/json', 'Content-Type': 'application/json'})
     try:
         j_data = r.json()
     except ValueError:
-        logger.warn("[EMULATE]The API server returned non-json data(Error) %s" % r.text)
+        logger.warn("[EMULATE]The API server returned non-json data(Error) {0!s}".format(r.text))
         return redirect('application')
 
     # Check if error response was sent
@@ -67,8 +65,7 @@ def emulate(request, username):
                     "token/emulated_by. Data: %s" % j_data)
         return redirect('application')
 
-    logger.info("[EMULATE]User %s (Token: %s) has emulated User %s (Token:%s)"
-                % (emulated_by, old_token, username, new_token))
+    logger.info("[EMULATE]User {0!s} (Token: {1!s}) has emulated User {2!s} (Token:{3!s})".format(emulated_by, old_token, username, new_token))
 
     request.session["emulate_by"] = emulated_by
     request.session['emulator_token'] = old_token
@@ -84,8 +81,7 @@ def unemulate(request):
         old_token = request.session['access_token']
 
     # Restore the 'old token'
-    logger.info("[EMULATE]Session_token: %s. Request to remove emulation."
-                % (old_token, ))
+    logger.info("[EMULATE]Session_token: {0!s}. Request to remove emulation.".format(old_token ))
     request.session['access_token'] = old_token
 
     if "emulate_by" in request.session:

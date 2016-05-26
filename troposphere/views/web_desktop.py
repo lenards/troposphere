@@ -31,7 +31,7 @@ def web_desktop(request):
     """
     template_params = {}
 
-    logger.info("POST body: %s" % request.POST)
+    logger.info("POST body: {0!s}".format(request.POST))
 
     if request.user.is_authenticated():
         logger.info("user is authenticated, well done.")
@@ -41,8 +41,8 @@ def web_desktop(request):
             ip_address = request.POST['ipAddress']
             client_ip = request.META['REMOTE_ADDR']
 
-            logger.info("ip_address: %s" % ip_address)
-            logger.info("client_ip: %s" % client_ip)
+            logger.info("ip_address: {0!s}".format(ip_address))
+            logger.info("client_ip: {0!s}".format(client_ip))
 
             client_ip_fingerprint = SIGNER.get_signature(client_ip)
             browser_fingerprint = SIGNER.get_signature(''.join([
@@ -53,7 +53,7 @@ def web_desktop(request):
                 client_ip_fingerprint,
                 browser_fingerprint])
 
-            url = '%s?token=%s&password=display' % (
+            url = '{0!s}?token={1!s}&password=display'.format(
                 settings.WEB_DESKTOP['redirect']['PROXY_URL'],
                 sig)
 
@@ -61,12 +61,12 @@ def web_desktop(request):
             response.set_cookie('original_referer', request.META['HTTP_REFERER'],
                 domain=settings.WEB_DESKTOP['redirect']['COOKIE_DOMAIN'])
 
-            logger.info("redirect response: %s" % (response))
+            logger.info("redirect response: {0!s}".format((response)))
 
             return response
         else:
             raise UnreadablePostError
 
     else:
-        logger.info("not authenticated: \nrequest:\n %s" % request)
+        logger.info("not authenticated: \nrequest:\n {0!s}".format(request))
         raise PermissionDenied

@@ -17,7 +17,7 @@ ui_urlpatterns = [
         name='application'),
     url(r'^application/emulate$', views.unemulate,
         name='unemulate-user'),
-    url(r'^application/emulate/(?P<username>(%s))$' % user_match,
+    url(r'^application/emulate/(?P<username>({0!s}))$'.format(user_match),
         views.emulate,
         name='emulate-user'),
     url(r'^application', views.application, name='application'),
@@ -39,7 +39,7 @@ ui_urlpatterns = [
 base_url = settings.BASE_URL.lstrip("/")
 
 urlpatterns = [
-    url(r'^%s/' % base_url,
+    url(r'^{0!s}/'.format(base_url),
         include(ui_urlpatterns)),
 ]
 
