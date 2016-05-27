@@ -94,7 +94,7 @@ export default React.createClass({
     render: function() {
       var webShellUrl = this.props.instance.shell_url(),
           remoteDesktopUrl = this.props.instance.vnc_url(),
-          usesRemoteDesktop = !!(this.props.instance && this.props.instance.get('vnc')),
+          usesRemoteDesktop = false,
           status = this.props.instance.get('state').get('status'),
           activity = this.props.instance.get('state').get('activity'),
           ip_address = this.props.instance.get('ip_address'),
