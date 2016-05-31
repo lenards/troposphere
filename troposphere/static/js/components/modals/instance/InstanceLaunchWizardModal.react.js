@@ -108,7 +108,7 @@ export default React.createClass({
 
         let provider = this.state.provider;
         if (providerList) {
-            provider = provider || providerList.first();
+            provider = provider || providerList.shuffle()[0];
         }
 
         let resourcesUsed, identityProvider, providerSizeList;
