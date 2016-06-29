@@ -163,6 +163,7 @@ let Header = React.createClass({
         if (context.hasMaintenanceNotice()) {
             var notice = context.getMaintenanceNotice();
             var options = {
+                "toastClass": "toast toast-mod-info-darken",
                 "positionClass": "toast-top-full-width"
             };
 
