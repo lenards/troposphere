@@ -62,6 +62,16 @@ def _should_enabled_new_relic():
         bool(settings.NEW_RELIC_ENVIRONMENT) is True
 
 
+def _notice_to_dict(model):
+    """
+    Translates model attributes of a MaintenanceNotice to a dict.
+    """
+    ret = {}
+    ret['title'] = model.title
+    ret['message'] = model.message
+    return ret
+
+
 def _populate_template_params(request, maintenance_records, notice_t, disabled_login, public=False):
     """
     Creates a dict of parameters for later template merge given the arguments,
@@ -75,6 +85,7 @@ def _populate_template_params(request, maintenance_records, notice_t, disabled_l
     if notice_t and len(notice_t) > 2:
         notice = notice_t[1] if not notice_t[2] else None
     logger.info("maintenance notice tuple: {0}".format(notice_t))
+    logger.info("notice: {0}".format(notice))
 
     template_params = {
         'access_token': request.session.get('access_token'),
@@ -201,7 +212,7 @@ def _handle_authenticated_application_request(request, maintenance_records,
     """
     if notice_info and notice_info[1]:
         notice_info = (notice_info[0],
-            notice_info[1].message,
+            _notice_to_dict(notice_info[1]),
             'maintenance_notice' in request.COOKIES)
 
     template_params, show_troposphere_only = _populate_template_params(request,
@@ -260,7 +271,8 @@ def _handle_authenticated_application_request(request, maintenance_records,
 
     if 'maintenance_notice' not in request.COOKIES:
         response.set_cookie('maintenance_notice', 'true',
-            expires=(timezone.now() + timedelta(hours=3)))
+            expires=(timezone.now() +
+                timedelta(hours=12)))
 
     return response
 

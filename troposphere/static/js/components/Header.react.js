@@ -161,12 +161,15 @@ let Header = React.createClass({
 
     handleNotice: function() {
         if (context.hasMaintenanceNotice()) {
+            var notice = context.getMaintenanceNotice();
+            var options = {
+                "positionClass": "toast-top-full-width"
+            };
+
             NotificationController.warning(
-                "CyVerse Maintenance Information",
-                context.getMaintenanceNotice(),
-                {
-                     "positionClass": "toast-top-full-width"
-                }
+                notice['title'],
+                notice['message'],
+                options
             );
         }
     },
