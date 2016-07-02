@@ -23,8 +23,7 @@ var plugins = [
     new webpack.optimize.CommonsChunkPlugin({
         names: ['vendor', 'manifest'],
         minChunks: Infinity
-    }),
-    new Clean([PATHS.output])
+    })
 ];
 
 var outputCfg = {}
@@ -60,7 +59,8 @@ if (process.env.NODE_ENV === "production") {
   );
 } else {
   plugins.push(
-    new ExtractTextPlugin("[name].css", { allChunks: true })
+    new ExtractTextPlugin("[name].css", { allChunks: true }),
+    new Clean([PATHS.output])
   );
 
   outputCfg = {
