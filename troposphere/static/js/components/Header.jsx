@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from 'react-router';
+import { Link } from 'react-router';
 import Backbone from 'backbone';
 import toastr from 'toastr';
 
@@ -12,7 +12,6 @@ import { trackAction } from 'utilities/userActivity';
 import { hasLoggedInUser } from 'utilities/profilePredicate';
 
 
-let Link = Router.Link;
 
 const links = [
     {
