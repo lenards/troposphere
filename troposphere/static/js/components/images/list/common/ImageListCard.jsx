@@ -1,6 +1,5 @@
 import React from "react";
-import Router from "react-router";
-import RouterInstance from "Router";
+import { withRouter } from "react-router";
 import Gravatar from "components/common/Gravatar";
 import MediaCard from "components/common/ui/MediaCard";
 import Backbone from "backbone";
@@ -13,18 +12,17 @@ import moment from "moment";
 import stores from "stores";
 
 
-export default React.createClass({
+const ImageListCard = React.createClass({
     displayName: "ImageListCard",
 
-    mixins: [Router.State],
 
     propTypes: {
         image: React.PropTypes.instanceOf(Backbone.Model).isRequired
     },
 
     onCardClick() {
-        RouterInstance.getInstance()
-            .transitionTo("image-details",{
+        this.props.router.transitionTo(
+            "image-details", {
                 imageId: this.props.image.id
             });
     },
@@ -126,3 +124,5 @@ export default React.createClass({
         );
     }
 });
+
+export default withRouter(ImageListCard);
