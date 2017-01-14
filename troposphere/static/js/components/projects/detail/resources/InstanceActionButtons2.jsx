@@ -1,10 +1,27 @@
 import React from "react";
 import Backbone from "backbone";
+// TODO remove after evaluation
+import Raven from "raven-js";
+
 import Button from "./Button";
 import modals from "modals";
 
+
+/**
+ * I have some concern that calls to modals will fail,
+ * this allows us to capture them in Sentry
+ */
+function captureMsg(ex) {
+    if (Raven && Raven.isSetup()) {
+        if (Raven.captureException) {
+            Raven.captureException(ex);
+        }
+    }
+}
+
+
 export default React.createClass({
-    displayName: "InstanceActionButtons",
+    displayName: "InstanceActionButtons_2",
 
     propTypes: {
         multipleSelected: React.PropTypes.bool.isRequired,
@@ -14,42 +31,58 @@ export default React.createClass({
     },
 
     onStart: function() {
-        modals.InstanceModals.start(this.props.instance);
+        try {
+            modals.InstanceModals.start(this.props.instance);
+        } catch (ex) { captureMsg(ex); }
     },
 
     onSuspend: function() {
-        modals.InstanceModals.suspend(this.props.instance);
+        try {
+            modals.InstanceModals.suspend(this.props.selectedResources);
+        } catch (ex) { captureMsg(ex); }
     },
 
     onStop: function() {
-        modals.InstanceModals.stop(this.props.instance);
+        try {
+            modals.InstanceModals.stop(this.props.instance);
+        } catch (ex) { captureMsg(ex); }
     },
 
     onReboot: function() {
-        modals.InstanceModals.reboot(this.props.instance);
+        try {
+            modals.InstanceModals.reboot(this.props.instance);
+        } catch (ex) { captureMsg(ex); }
     },
 
     onResume: function() {
-        modals.InstanceModals.resume(this.props.instance);
+        try {
+            modals.InstanceModals.resume(this.props.selectedResources);
+        } catch (ex) { captureMsg(ex); }
     },
 
     onDelete: function() {
+        // *all* _on_{{action}} functions should consider unselect(ing)
         this.props.onUnselect(this.props.instance);
-        modals.InstanceModals.destroy({
-            instance: this.props.instance,
-            project: this.props.project
-        });
+
+        try {
+            modals.InstanceModals.destroy({
+                instance: this.props.instance,
+                project: this.props.project
+            });
+        } catch (ex) { captureMsg(ex); }
     },
 
     render: function() {
-        var instance = this.props.instance,
-            status = instance.get("state").get("status_raw"),
+        let { instance, selectedResources } = this.props,
+            status = instance.get("state").get("status"),
             linksArray = [],
             style = {
                 marginRight: "10px"
             };
 
-        if (!this.props.multipleSelected && instance.get("state").isInFinalState()) {
+        //debugger;
+
+        if (selectedResources) {
             if (status === "active") {
                 linksArray.push(
                     <Button style={style}
@@ -96,20 +129,24 @@ export default React.createClass({
             }
         }
 
-        if (!this.props.multipleSelected) {
-            // Include "Delete" if only one resource
-            // is currently selected - regardless of
-            // the state of that resource
-            linksArray.push(
-              <Button
-                  key="Delete"
-                  icon="remove"
-                  tooltip="Delete"
-                  onClick={this.onDelete}
-                  isVisible={true}
-              />
-            );
-        }
+        // TODO use featureFlag `BULK_RESOURCE_ACTIONS`
+
+
+        /* if (!this.props.multipleSelected) {
+         *     // Include "Delete" if only one resource
+         *     // is currently selected - regardless of
+         *     // the state of that resource
+         *     linksArray.push(
+         *       <Button
+         *           key="Delete"
+         *           icon="remove"
+         *           tooltip="Delete"
+         *           onClick={this.onDelete}
+         *           isVisible={true}
+         *       />
+         *     );
+         * }
+         */
 
         return (
         <div className="clearfix u-md-pull-right">
