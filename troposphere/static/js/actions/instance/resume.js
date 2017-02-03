@@ -70,8 +70,6 @@ export default {
     resume: function(params) {
         if (!params.resources)
             throw new Error("Missing resources");
-        if (params.instance)
-            throw new Error("Deprecated parameter passed");
 
         // We expect `resources` to be a backbone collection
         let resources = params.resources;

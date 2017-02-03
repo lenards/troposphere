@@ -69,8 +69,6 @@ export default {
     start: function(params) {
         if (!params.resources)
             throw new Error("Missing resources");
-        if (params.instance)
-            throw new Error("Deprecated parameter passed");
 
         // NOTE - we're passing a collection now ...
         let resources = params.resources;
