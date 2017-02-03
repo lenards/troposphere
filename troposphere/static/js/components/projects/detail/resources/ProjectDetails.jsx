@@ -36,10 +36,8 @@ export default React.createClass({
     },
 
     deselectAllResources: function() {
-        var selectedResources = this.state.selectedResources;
-        selectedResources.reset();
         this.setState({
-            selectedResources
+            selectedResources: new Backbone.Collection()
         });
     },
 
