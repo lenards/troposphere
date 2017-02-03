@@ -45,17 +45,16 @@ export default React.createClass({
         var selectedResources = this.state.selectedResources,
             previewedResource = this.state.previewedResource;
 
-        // Remove the resources from the list of selected resources
-        selectedResources.remove(resource);
-
         // Replace preview, with another
         if (previewedResource == resource) {
             previewedResource = selectedResources.last();
         }
 
+        // Remove the resource from the list of selected resources
+        // by rejecting (which returns resources without `resource`)
         this.setState({
             previewedResource,
-            selectedResources,
+            selectedResources: selectedResources.reject(resource)
         });
     },
 
