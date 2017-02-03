@@ -17,11 +17,10 @@ export default {
      * @param resources - collection of resources to act on
      */
     suspend: function(resources) {
-        let resourcesCopy = resources.clone(),
-            props = { resources: resourcesCopy };
+        let props = { resources };
 
         ModalHelpers.renderModal(InstanceSuspendModal, props, function() {
-            actions.InstanceActions.suspend({ resources: resourcesCopy });
+            actions.InstanceActions.suspend({ resources });
         });
     }
 };
