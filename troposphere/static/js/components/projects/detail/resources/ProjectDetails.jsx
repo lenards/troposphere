@@ -43,18 +43,25 @@ export default React.createClass({
 
     onResourceDeselected: function(resource) {
         var selectedResources = this.state.selectedResources,
-            previewedResource = this.state.previewedResource;
-
-        // Replace preview, with another
-        if (previewedResource == resource) {
-            previewedResource = selectedResources.last();
-        }
+            previewedResource = this.state.previewedResource,
+            nextSelected,
+            nextPreviewed;
 
         // Remove the resource from the list of selected resources
         // by rejecting (which returns resources without `resource`)
+        // ----
+        // note - `creject` is just version of `reject` the honors
+        // the expectation of getting back a Collection, not array
+        nextSelected = selectedResources.creject(resource);
+
+        // Replace preview, with another
+        if (previewedResource == resource) {
+            nextPreviewed = nextSelected.last();
+        }
+
         this.setState({
-            previewedResource,
-            selectedResources: selectedResources.reject(resource)
+            previewedResource: nextPreviewed,
+            selectedResources: nextSelected
         });
     },
 
@@ -81,6 +88,7 @@ export default React.createClass({
             );
         }
     },
+
     onDeleteSelectedResources: function() {
         actions.ProjectActions.deleteResources(
             this.state.selectedResources,
