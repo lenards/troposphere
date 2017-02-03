@@ -284,7 +284,8 @@ export default React.createClass({
             // Links with onClick callbacks will typically trigger modals requiring
             // confirmation before continuing
             return (
-            <li key={link.label} className={className} onClick={link.onClick}>
+            <li key={link.label} className={className}
+                onClick={link.onClick} disabled={link.isDisabled}>
                 {linkLabelMarkup}
             </li>
             );
