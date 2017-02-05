@@ -1,7 +1,6 @@
 import React from "react";
-import BootstrapModalMixin from "components/mixins/BootstrapModalMixin";
 
-import Instance from "models/Instance";
+import BootstrapModalMixin from "components/mixins/BootstrapModalMixin";
 
 
 export default React.createClass({
@@ -28,39 +27,51 @@ export default React.createClass({
     // ------
     //
 
-    renderBody: function(multiple, instances) {
-        let operativeNoun = multiple ? "these instances": "this instance",
-            instanceList = (<div/>);
+    renderInstance(instance) {
+        return (
+        <li key={instance.get("uuid")}>
+            <strong>
+                {`${instance.get("name")}`}
+            </strong>
+            <ul>
+                <li style={{listStyleType: "square"}}>
+                    {`started on: ${instance.get("start_date")}`}
+                </li>
+            </ul>
+        </li>
+        );
+    },
+
+
+
+    renderBody: function(instances) {
+        let instanceList = (<div>No instances to act on</div>),
+            operativeNoun,
+            questionBlock;
 
         if (instances) {
-            instanceList = (
-            <div>
-                <ul>
-                {instances.map((i) => {
-                    return (
-                    <li key={i.get("uuid")}>
-                        <strong>
-                            {`${i.get("name")}`}
-                        </strong>
+            if (instances.length > 0) {
+                instanceList = (
+                    <div>
                         <ul>
-                            <li style={{listStyleType: "square"}}>
-                                {`started on: ${i.get("start_date")}`}
-                            </li>
+                            {instances.map(this.renderInstance)}
                         </ul>
-                    </li>
-                    );
-                 })}
-                </ul>
-            </div>
+                    </div>
+                );
+            }
+
+            operativeNoun = instances.length > 1 ? "these instances" : "this instance";
+            questionBlock = (
+            <p>
+                {`Would you like to resume ${operativeNoun}?`}
+            </p>
             );
         }
 
         return (
         <div>
             {instanceList}
-            <p>
-                {`Would you like to resume ${operativeNoun}?`}
-            </p>
+            {questionBlock}
             <p>
                 An instance's IP address may change when it resumes.
             </p>
@@ -69,13 +80,22 @@ export default React.createClass({
     },
 
     render: function() {
-        // AUTHOR'S NOTE - not sure if I should extract this filter predicate into
-        // a utility function to be shared across the <Instance*Modal/>s ...
-        let { resources } = this.props,
-            instances = resources ? resources.filter((r) => r instanceof Instance) : null,
+        let { instances } = this.props,
             multi = instances && instances.length > 1,
+            noInstances = !instances || (instances && instances.length == 0),
             titleNoun = multi ? "Instances" : "Instance",
-            buttonText = multi ? "these instances" : "this instance";
+            buttonText = multi ? "these instances" : "this instance",
+            actionButton;
+
+        if (!noInstances) {
+            actionButton = (
+            <button type="button"
+                    className="btn btn-primary"
+                    onClick={this.confirm}>
+                {`Yes, resume ${buttonText}`}
+            </button>
+            );
+        }
 
         return (
         <div className="modal fade">
@@ -86,15 +106,13 @@ export default React.createClass({
                         <h1 className="t-title">{`Resume ${titleNoun}`}</h1>
                     </div>
                     <div className="modal-body">
-                        {this.renderBody(multi, instances)}
+                        {this.renderBody(instances)}
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-danger" onClick={this.cancel}>
                             Cancel
                         </button>
-                        <button type="button" className="btn btn-primary" onClick={this.confirm}>
-                            {`Yes, resume ${buttonText}`}
-                        </button>
+                        {actionButton}
                     </div>
                 </div>
             </div>
