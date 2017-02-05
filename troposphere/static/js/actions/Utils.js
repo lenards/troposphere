@@ -52,13 +52,13 @@ export default {
                 };
             }
             NotificationController.error(
-                title,
-                error.code + ": " + error.message
+                error.code + ": " + error.message,
+                title
             );
         } catch (err) {
             NotificationController.error(
-                title,
-                "If the problem persists, please contact support."
+                "If the problem persists, please contact support.",
+                title
             );
         }
     }
