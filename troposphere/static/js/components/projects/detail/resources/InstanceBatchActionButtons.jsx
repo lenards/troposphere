@@ -1,24 +1,10 @@
 import React from "react";
 import Backbone from "backbone";
-// NOTE raven-js included during evaluation
-// - may be removed after ATMO-981 resolved
-import Raven from "raven-js";
+
+import { filterInstances } from "utilities/filterCollection";
 
 import Button from "./Button";
 import modals from "modals";
-
-
-/**
- * I have some concern that calls to modals will fail,
- * this allows us to capture them in Sentry
- */
-function captureMsg(ex) {
-    if (Raven && Raven.isSetup()) {
-        if (Raven.captureException) {
-            Raven.captureException(ex);
-        }
-    }
-}
 
 
 export default React.createClass({
@@ -32,51 +18,51 @@ export default React.createClass({
     },
 
     onStart: function() {
-        try {
-            modals.InstanceModals.start(this.props.selectedResources);
-            this.props.onUnselectAll();
-        } catch (ex) { captureMsg(ex); }
+        let { selectedResources } = this.props,
+            instances = selectedResources.filter(filterInstances);
+
+        modals.InstanceModals.start(instances);
+        this.props.onUnselectAll();
     },
 
     onSuspend: function() {
-        try {
-            modals.InstanceModals.suspend(this.props.selectedResources);
-            this.props.onUnselectAll();
-        } catch (ex) { captureMsg(ex); }
+        let { selectedResources } = this.props,
+            instances = selectedResources.filter(filterInstances);
+
+        modals.InstanceModals.suspend(instances);
+        this.props.onUnselectAll();
     },
 
     onStop: function() {
-        try {
-            modals.InstanceModals.stop(this.props.selectedResources);
-            this.props.onUnselectAll();
-        } catch (ex) { captureMsg(ex); }
+        let { selectedResources } = this.props,
+            instances = selectedResources.filter(filterInstances);
+
+        modals.InstanceModals.stop(instances);
+        this.props.onUnselectAll();
     },
 
     onResume: function() {
-        try {
-            modals.InstanceModals.resume(this.props.selectedResources);
-            this.props.onUnselectAll();
-        } catch (ex) { captureMsg(ex); }
+        let { selectedResources } = this.props,
+            instances = selectedResources.filter(filterInstances);
+
+        modals.InstanceModals.resume(instances);
+        this.props.onUnselectAll();
     },
 
     onReboot: function() {
         // NOTE: -- @lenards
         // Intentionally *not* supporting bulk/batch actions
-        try {
-            modals.InstanceModals.reboot(this.props.instance);
-        } catch (ex) { captureMsg(ex); }
+        modals.InstanceModals.reboot(this.props.instance);
     },
 
     onDelete: function() {
         // *all* _on_{{action}} functions should consider unselect(ing)
         this.props.onUnselect(this.props.instance);
 
-        try {
-            modals.InstanceModals.destroy({
-                instance: this.props.instance,
-                project: this.props.project
-            });
-        } catch (ex) { captureMsg(ex); }
+        modals.InstanceModals.destroy({
+            instance: this.props.instance,
+            project: this.props.project
+        });
     },
 
     render: function() {
