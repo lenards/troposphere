@@ -1,87 +1,26 @@
-import Backbone from "backbone";
+import errorMessages from "./errorMessages.js";
+import { applyInstanceAction } from "./functions.js";
 
-import InstanceConstants from "constants/InstanceConstants";
-import Instance from "models/Instance";
-import InstanceState from "models/InstanceState";
-import InstanceActionRequest from "models/InstanceActionRequest";
-
-import Utils from "../Utils";
 
 /**
- * Defines the `start` steps for a single instance
+ * Defines the "start" action for a collection of instances
  *
- * Only intended to handle "models/Instance" objects
+ * We expect `params` to be an object with an `instances`
+ * property providing access to the colleciton of instances
  */
-function handleOne(instance) {
-    // if we've been passed a model via "selected resources" that
-    // is *not* an Instance, then just skip it - _move on_
-    if (!(instance instanceof Instance)) return;
 
-    let instanceState = new InstanceState({
+const start = (params) => {
+    let instanceStart = applyInstanceAction(
+        "start",
+        {
             status_raw: "shutoff - powering-on",
             status: "shutoff",
             activity: "powering-on"
-        }),
-        originalState = instance.get("state"),
-        actionRequest = new InstanceActionRequest({
-            instance: instance
-        });
+        },
+        errorMessages.startFailed
+    );
 
-    instance.set({
-        state: instanceState
-    });
-
-    Utils.dispatch(InstanceConstants.UPDATE_INSTANCE, {
-        instance: instance
-    });
-
-    actionRequest.save(null, {
-        attrs: {
-            action: "start"
-        }
-    }).done(function() {
-        // Consider "success" notification ...
-        instance.set({
-            state: instanceState
-        });
-    }).fail(function(response) {
-        instance.set({
-            state: originalState
-        });
-        Utils.displayError({
-            title: "Your instance could not be started",
-            response: response
-        });
-    }).always(function() {
-        Utils.dispatch(InstanceConstants.UPDATE_INSTANCE, {
-            instance: instance
-        });
-        Utils.dispatch(InstanceConstants.POLL_INSTANCE_WITH_DELAY, {
-            instance: instance,
-            delay: 25*1000,
-        });
-    });
+    instanceStart(params);
 }
 
-
-export default {
-
-    start: function(params) {
-        if (!params.resources)
-            throw new Error("Missing resources");
-
-        // NOTE - we're passing a collection now ...
-        let resources = params.resources;
-
-        // in case "resources" is not a collection, but is
-        // an Instance passed as `resources`, make a collection
-        // and add the "models/Instance" to it
-        if (resources instanceof Instance) {
-            let instance = resources;
-            resources = new Backbone.Collection(instance);
-        }
-
-        resources.map(handleOne);
-    }
-
-};
+export default { start };
