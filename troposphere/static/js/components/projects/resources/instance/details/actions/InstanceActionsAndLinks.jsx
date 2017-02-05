@@ -16,20 +16,24 @@ export default React.createClass({
         instance: React.PropTypes.instanceOf(Backbone.Model).isRequired
     },
 
+    wrapInstance: function() {
+        return new Backbone.Collection(this.props.instance);
+    },
+
     onStart: function() {
-        modals.InstanceModals.start(this.props.instance);
+        modals.InstanceModals.start(this.wrapInstance());
     },
 
     onSuspend: function() {
-        modals.InstanceModals.suspend(this.props.instance);
+        modals.InstanceModals.suspend(this.wrapInstance());
     },
 
     onStop: function() {
-        modals.InstanceModals.stop(this.props.instance);
+        modals.InstanceModals.stop(this.wrapInstance());
     },
 
     onResume: function() {
-        modals.InstanceModals.resume(this.props.instance);
+        modals.InstanceModals.resume(this.wrapInstance());
     },
 
     onReport: function() {
