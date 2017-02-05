@@ -1,7 +1,4 @@
-import IResume from "./instance/resume";
-import ISuspend from "./instance/suspend";
-import IStop from "./instance/stop";
-import IStart from "./instance/start";
+// Delegated definitions of Instance Actions
 import IReboot from "./instance/reboot";
 import IRedeploy from "./instance/redeploy";
 import IPoll from "./instance/poll";
@@ -11,11 +8,18 @@ import IUpdate from "./instance/update";
 import IReport from "./instance/report";
 import IRequest from "./instance/requestImage";
 
+// Marked for re-working with common `instanceActionImpl`
+import { resume } from "./instance/resume";
+import { suspend } from "./instance/suspend";
+import { stop } from "./instance/stop";
+import { start } from "./instance/start";
+
+
 export default {
-    resume: IResume.resume,
-    suspend: ISuspend.suspend,
-    stop: IStop.stop,
-    start: IStart.start,
+    resume,
+    suspend,
+    stop,
+    start,
     reboot: IReboot.reboot,
     redeploy: IRedeploy.redeploy,
     poll: IPoll.poll,
