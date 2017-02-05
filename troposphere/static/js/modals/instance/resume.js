@@ -6,19 +6,15 @@ import actions from "actions";
 
 export default {
     /**
-     * Resume any valid/actionable resources
+     * Resume any valid/actionable instances
      *
-     * The action method handles resources verifying type (via instanceof)
-     * to ensure that multi0ple resources can be handled.
-     *
-     * @param resources - collection of resources to act on
+     * @param instances - collection of instances to act on
      */
-    resume: function(resources) {
-        let props = { resources };
+    resume: function(instances) {
+        let props = { instances };
 
         ModalHelpers.renderModal(InstanceResumeModal, props, function() {
-            actions.InstanceActions.resume({ resources });
+            actions.InstanceActions.resume({ instances });
         });
     }
-
 };

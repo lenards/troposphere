@@ -6,15 +6,15 @@ import actions from "actions";
 
 export default {
     /**
-     * Start any valid/actionable resources
+     * Start any valid/actionable instances
      *
-     * @param resources - collection of resources to act on
+     * @param instances - collection of instances to act on
      */
-    start: function(resources) {
-        let props = { resources };
+    start: function(instances) {
+        let props = { instances };
 
         ModalHelpers.renderModal(InstanceStartModal, props, function() {
-            actions.InstanceActions.start({ resources })
+            actions.InstanceActions.start({ instances })
         });
     }
 

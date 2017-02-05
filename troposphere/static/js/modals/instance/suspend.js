@@ -6,21 +6,18 @@ import actions from "actions";
 
 export default {
     /**
-     * Suspend any valid/actionable resources
+     * Suspend any valid/actionable instances
      *
-     * The action method handles resources by verifying type (via instanceof)
-     * to ensure that multiple resources can be handled.
+     * These instances as passed to the modal as `props` so that they
+     * can be optional displayed for clarity.
      *
-     * These resources as passed to the modal as `props` so that they can be
-     * optional displayed for clarity.
-     *
-     * @param resources - collection of resources to act on
+     * @param instances - collection of instances to act on
      */
-    suspend: function(resources) {
-        let props = { resources };
+    suspend: function(instances) {
+        let props = { instances };
 
         ModalHelpers.renderModal(InstanceSuspendModal, props, function() {
-            actions.InstanceActions.suspend({ resources });
+            actions.InstanceActions.suspend({ instances });
         });
     }
 };

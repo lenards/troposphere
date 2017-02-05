@@ -6,15 +6,15 @@ import actions from "actions";
 
 export default {
     /**
-     * Stop any valid/actionable resources
+     * Stop any valid/actionable instances
      *
-     * @param resources - collection of resources to act on
+     * @param instances - collection of instances to act on
      */
-    stop: function(resources) {
-        let props = { resources };
+    stop: function(instances) {
+        let props = { instances };
 
         ModalHelpers.renderModal(InstanceStopModal, props, function() {
-            actions.InstanceActions.stop({ resources });
+            actions.InstanceActions.stop({ instances });
         })
     }
 };
