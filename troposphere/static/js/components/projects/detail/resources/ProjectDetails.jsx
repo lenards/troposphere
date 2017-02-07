@@ -1,13 +1,16 @@
 import React from "react";
 import Backbone from "backbone";
+
 import ButtonBar from "./ButtonBar";
 import ExternalLinkList from "./link/ExternalLinkList";
 import ImageList from "./image/ImageList";
 import InstanceList from "./instance/InstanceList";
 import VolumeList from "./volume/VolumeList";
+
 import modals from "modals";
 import stores from "stores";
 import actions from "actions";
+
 
 export default React.createClass({
     displayName: "ProjectDetails",
