@@ -18,14 +18,15 @@ const includeMetaElements = (image) => {
 
 
     return (
-    <Helmet title={globals.SITE_NAME}
+    <Helmet htmlAttributes={{"xmlns:og": "http://ogp.me/ns#" }}
+            title={globals.SITE_NAME}
             meta={[
-                { property: 'og:title', content: image.get('name') },
-                { property: 'og:type', content: 'website' },
-                { property: 'og:image', content: logoImage },
-                { property: 'og:url', content: window.location.href },
-                { property: 'og:description', content:image.get('description') },
-                { property: 'og:site_name', content:globals.SITE_TITLE }
+                { property: "og:title", content: image.get("name") },
+                { property: "og:type", content: "website" },
+                { property: "og:image", content: logoImage },
+                { property: "og:url", content: window.location.href },
+                { property: "og:description", content:image.get("description") },
+                { property: "og:site_name", content:globals.SITE_TITLE }
             ]} />
     );
 }
