@@ -1,12 +1,50 @@
 import React from "react";
+import DocumentMeta from 'react-document-meta';
 import Backbone from "backbone";
+
 import TagsView from "./tags/TagsView";
 import CreatedView from "./created/CreatedView";
 import RemovedView from "./removed/RemovedView";
 import AuthorView from "./author/AuthorView";
 import DescriptionView from "./description/DescriptionView";
-import stores from "stores";
 import Gravatar from "components/common/Gravatar";
+
+import globals from "globals";
+import stores from "stores";
+
+
+const includeDocumentMeta = (image) => {
+    let logoImage = `${window.location.hostname}/${globals.THEME_URL}/images/large_logo.png`,
+        meta = {
+            meta: {
+                title: `${globals.SITE_FOOTER} - ${globals.SITE_TITLE}`,
+                description: image.get('description'),
+                name: {
+                    keywords: ''
+                },
+                itemProp: {
+                    name: image.get('name'),
+                    description: 'This is the page description',
+                    image: logoImage
+                },
+                property: {
+                    'og:title': image.get('name'),
+                    'og:type': 'website',
+                    'og:image': logoImage,
+                    'og:url': window.location,
+                    'og:description': image.get('description'),
+                    'og:site_name': globals.SITE_TITLE,
+                },
+                auto: {
+                    ograph: true
+                }
+            }
+        };
+
+    return (
+        <DocumentMeta {...meta} />
+    );
+}
 
 export default React.createClass({
     displayName: "ViewImageDetails",
@@ -63,12 +101,13 @@ export default React.createClass({
         return (
             <div style={ style.wrapper }>
                 <div style={ style.img }>
-                    <Gravatar 
-                        hash={image.get("uuid_hash")} 
-                        size={ 50 } type={type} 
+                    <Gravatar
+                        hash={image.get("uuid_hash")}
+                        size={ 50 } type={type}
                     />
                 </div>
                 <div>
+                    {includeDocumentMeta(image)}
                     <div style={ style.details }>
                         <CreatedView image={ image } />
                         <RemovedView image={ image } />
