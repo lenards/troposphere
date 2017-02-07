@@ -24,7 +24,7 @@ export default React.createClass({
     },
 
     onResourceSelected: function(resource) {
-        var selectedResources = this.state.selectedResources;
+        let { selectedResources } = this.state;
 
         // Add the resource to the list of selected resources
         selectedResources.push(resource);
@@ -55,9 +55,8 @@ export default React.createClass({
         nextSelected = selectedResources.creject(resource);
 
         // Replace preview, with another
-        if (previewedResource == resource) {
-            nextPreviewed = nextSelected.last();
-        }
+        nextPreviewed = (previewedResource == resource) ?
+                        nextSelected.last() : previewedResource;
 
         this.setState({
             previewedResource: nextPreviewed,
