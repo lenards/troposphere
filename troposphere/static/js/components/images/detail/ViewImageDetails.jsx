@@ -1,12 +1,35 @@
 import React from "react";
+import Helmet from "react-helmet";
+
 import Backbone from "backbone";
 import TagsView from "./tags/TagsView";
 import CreatedView from "./created/CreatedView";
 import RemovedView from "./removed/RemovedView";
 import AuthorView from "./author/AuthorView";
 import DescriptionView from "./description/DescriptionView";
-import stores from "stores";
 import Gravatar from "components/common/Gravatar";
+
+import globals from "globals";
+import stores from "stores";
+
+
+const includeMetaElements = (image) => {
+    let logoImage = `${window.location.origin}${globals.THEME_URL}/images/large_logo.png`;
+
+
+    return (
+    <Helmet title={globals.SITE_NAME}
+            meta={[
+                { property: 'og:title', content: image.get('name') },
+                { property: 'og:type', content: 'website' },
+                { property: 'og:image', content: logoImage },
+                { property: 'og:url', content: window.location.href },
+                { property: 'og:description', content:image.get('description') },
+                { property: 'og:site_name', content:globals.SITE_TITLE }
+            ]} />
+    );
+}
+
 
 export default React.createClass({
     displayName: "ViewImageDetails",
@@ -63,12 +86,13 @@ export default React.createClass({
         return (
             <div style={ style.wrapper }>
                 <div style={ style.img }>
-                    <Gravatar 
-                        hash={image.get("uuid_hash")} 
-                        size={ 50 } type={type} 
+                    <Gravatar
+                        hash={image.get("uuid_hash")}
+                        size={ 50 } type={type}
                     />
                 </div>
                 <div>
+                    {includeMetaElements(image)}
                     <div style={ style.details }>
                         <CreatedView image={ image } />
                         <RemovedView image={ image } />
