@@ -14,7 +14,7 @@ import stores from "stores";
 
 
 const includeDocumentMeta = (image) => {
-    let logoImage = `${window.location.hostname}/${globals.THEME_URL}/images/large_logo.png`,
+    let logoImage = `${window.location.origin}${globals.THEME_URL}/images/large_logo.png`,
         meta = {
             meta: {
                 title: `${globals.SITE_FOOTER} - ${globals.SITE_TITLE}`,
@@ -24,19 +24,16 @@ const includeDocumentMeta = (image) => {
                 },
                 itemProp: {
                     name: image.get('name'),
-                    description: 'This is the page description',
+                    description: image.get('description'),
                     image: logoImage
                 },
                 property: {
                     'og:title': image.get('name'),
                     'og:type': 'website',
                     'og:image': logoImage,
-                    'og:url': window.location,
+                    'og:url': window.location.href,
                     'og:description': image.get('description'),
                     'og:site_name': globals.SITE_TITLE,
-                },
-                auto: {
-                    ograph: true
                 }
             }
         };
