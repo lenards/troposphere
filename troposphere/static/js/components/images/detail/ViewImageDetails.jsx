@@ -43,39 +43,6 @@ const includeDocumentMeta = (image) => {
     );
 }
 
-import globals from "globals";
-import stores from "stores";
-
-
-const includeDocumentMeta = (image) => {
-    let logoImage = `${window.location.origin}${globals.THEME_URL}/images/large_logo.png`,
-        meta = {
-            meta: {
-                title: `${globals.SITE_FOOTER} - ${globals.SITE_TITLE}`,
-                description: image.get('description'),
-                name: {
-                    keywords: ''
-                },
-                itemProp: {
-                    name: image.get('name'),
-                    description: image.get('description'),
-                    image: logoImage
-                },
-                property: {
-                    'og:title': image.get('name'),
-                    'og:type': 'website',
-                    'og:image': logoImage,
-                    'og:url': window.location.href,
-                    'og:description': image.get('description'),
-                    'og:site_name': globals.SITE_TITLE,
-                }
-            }
-        };
-
-    return (
-        <DocumentMeta {...meta} />
-    );
-}
 
 export default React.createClass({
     displayName: "ViewImageDetails",
