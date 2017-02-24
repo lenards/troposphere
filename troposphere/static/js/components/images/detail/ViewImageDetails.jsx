@@ -153,21 +153,12 @@ export default React.createClass({
             <div style={ style.wrapper }>
                 <div style={ style.img }>
                     <Gravatar
-<<<<<<< HEAD
                         hash={ image.get("uuid_hash") }
                         size={ 50 } type={ type }/>
                     { this.renderEndDated() }
                 </div>
                 <div>
                     { includeDocumentMeta(image) }
-=======
-                        hash={image.get("uuid_hash")}
-                        size={ 50 } type={type}
-                    />
-                </div>
-                <div>
-                    {includeDocumentMeta(image)}
->>>>>>> 8af2dfce0387b84f0bf6475db86b1b62383aa729
                     <div style={ style.details }>
                         <CreatedView image={ image } />
                         <RemovedView image={ image } />
