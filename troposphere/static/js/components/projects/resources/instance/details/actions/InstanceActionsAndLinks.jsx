@@ -52,6 +52,12 @@ export default React.createClass({
                 onClick: this.onStop
             },
             {
+                key: InstanceActionNames.RESIZE,
+                label: "Resize",
+                icon: "resize-full",
+                onClick: this.onResize
+            },
+            {
                 key: InstanceActionNames.RESUME,
                 label: "Resume",
                 icon: "play",
@@ -107,6 +113,10 @@ export default React.createClass({
 
     onStart: function() {
         modals.InstanceModals.start(this.props.instance);
+    },
+
+    onResize: function() {
+        modals.InstanceModals.resize(this.props.instance);
     },
 
     onSuspend: function() {
