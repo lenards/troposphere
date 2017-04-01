@@ -7,8 +7,6 @@ node_js:
 python:
   - "2.7"
 before_install:
-  - "npm -V"
-  - "node -V"
   - "python -V"
   - "pip -V"
 install:
