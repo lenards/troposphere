@@ -13,5 +13,6 @@ script:
   - "./configure --config-one theme:themeImagesPath.js"
   - "./configure --config-one theme:theme.json"
   - "./configure --config-one theme:variables.scss"
+  - "npm install"
   - "npm run build"
   - "npm run travis-lint"
