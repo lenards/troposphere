@@ -38,6 +38,9 @@ export default React.createClass({
                 instance: this.props.instance
             });
         } else {
+            window.Intercom('trackEvent',
+                            'reported-instance',
+                            {'created_at': Date.now()});
             window.Intercom('showNewMessage');
         }
     },
