@@ -193,96 +193,12 @@ export default React.createClass({
         form[0].submit();
     },
 
-<<<<<<< HEAD
     getIntegrationLinks() {
         let { instance } = this.props,
             webShellUrl = instance.shell_url(),
             webDesktopCapable = !!(instance && instance.get("web_desktop")),
             ipAddress = instance.get("ip_address"),
             disableWebLinks = !ipAddress || ipAddress === "0.0.0.0";
-=======
-    render: function() {
-        var webShellUrl = this.props.instance.shell_url(),
-            webDesktopCapable = !!(this.props.instance && this.props.instance.get("web_desktop")),
-            status = this.props.instance.get("state").get("status"),
-            activity = this.props.instance.get("state").get("activity"),
-            ip_address = this.props.instance.get("ip_address"),
-            webLinksDisabled = !ip_address || ip_address === "0.0.0.0",
-            inFinalState = this.props.instance.get("state").isInFinalState();
-
-        // todo: Add back and implement reboot and resize once it's understood how to
-        // I'm hiding from the display for now so as not to show users functionality
-        // that doesn't exist.
-        var linksArray = [
-            {
-                label: "Actions",
-                icon: null
-            },
-            {
-                label: "Report",
-                icon: "inbox",
-                onClick: this.onReport
-            }
-        //{label: 'Reboot', icon: 'repeat', onClick: this.onReboot},
-        //{label: 'Resize', icon: 'resize-full', onClick: this.onResize},
-        ];
-
-        if (status !== "suspended") {
-            linksArray.push({
-                label: "Image",
-                icon: "camera",
-                onClick: this.onImageRequest
-            });
-        }
-
-        // Add in the conditional links based on current machine state
-        if (inFinalState) {
-            if (status === "active") {
-                linksArray.push({
-                    label: "Suspend",
-                    icon: "pause",
-                    onClick: this.onSuspend
-                });
-                linksArray.push({
-                    label: "Stop",
-                    icon: "stop",
-                    onClick: this.onStop
-                });
-                linksArray.push({
-                    label: "Resize",
-                    icon: "resize-full",
-                    onClick: this.onResize
-                });
-                linksArray.push({
-                    label: "Reboot",
-                    icon: "off",
-                    onClick: this.onReboot
-                });
-                linksArray.push({
-                    label: "Redeploy",
-                    icon: "repeat",
-                    onClick: this.onRedeploy
-                });
-            } else if (status === "suspended") {
-                linksArray.push({
-                    label: "Resume",
-                    icon: "play",
-                    onClick: this.onResume
-                });
-                linksArray.push({
-                    label: "Reboot",
-                    icon: "off",
-                    onClick: this.onReboot
-                });
-            } else if (status === "shutoff") {
-                linksArray.push({
-                    label: "Start",
-                    icon: "play",
-                    onClick: this.onStart
-                });
-            }
-        }
->>>>>>> fix some bugs suggested by Tharon
 
         let links = [
             {
