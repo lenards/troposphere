@@ -1,3 +1,5 @@
+import { trackAction } from 'utilities/userActivity';
+
 import InstanceConstants from "constants/InstanceConstants";
 import InstanceState from "models/InstanceState";
 import Utils from "../Utils";
@@ -42,6 +44,8 @@ const shelve = (params) => {
                 title: "Your instance could not be shelved",
                 response: response
             });
+            trackAction("encountered-error");
+            trackAction("encountered-instance-error", { details: response });
         }).always(function() {
             Utils.dispatch(InstanceConstants.UPDATE_INSTANCE, {
                 instance: instance

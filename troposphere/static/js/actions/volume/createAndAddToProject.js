@@ -1,3 +1,5 @@
+import { trackAction } from 'utilities/userActivity';
+
 import VolumeConstants from "constants/VolumeConstants";
 import Volume from "models/Volume";
 import actions from "actions";
@@ -85,6 +87,8 @@ export default {
                 title: "Volume could not be created",
                 response: response
             });
+            trackAction("encountered-error");
+            trackAction("encountered-volume-error");
         }).always(function() {
             Utils.dispatch(ProjectVolumeConstants.REMOVE_PENDING_PROJECT_VOLUME, {
                 projectVolume: projectVolume

@@ -1,3 +1,4 @@
+import { trackAction } from 'utilities/userActivity';
 
 import InstanceConstants from "constants/InstanceConstants";
 import InstanceState from "models/InstanceState";
@@ -44,6 +45,8 @@ export default {
                 title: "The call to start instance redeployment has failed.",
                 response: response
             });
+            trackAction("encountered-error");
+            trackAction("encountered-instance-error", { details: response });
         }).always(function() {
             Utils.dispatch(InstanceConstants.UPDATE_INSTANCE, {
                 instance: instance

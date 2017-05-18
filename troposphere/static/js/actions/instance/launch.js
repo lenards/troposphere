@@ -1,4 +1,5 @@
 import { appBrowserHistory } from "utilities/historyFunctions";
+import { trackAction } from 'utilities/userActivity';
 
 import Utils from "../Utils";
 
@@ -28,6 +29,7 @@ function launch(params) {
         throw new Error("Missing identity");
     if (!params.size)
         throw new Error("Missing size");
+
     if (params.version) {
         let machines = params.version.get("machines"),
             selected_machines = machines.filter(function(machine) {
@@ -38,6 +40,7 @@ function launch(params) {
         }
         params.machine = selected_machines[0]
     }
+
     if (!params.machine)
         throw new Error("Missing machine");
 
@@ -132,6 +135,9 @@ function launch(params) {
                 title: "Instance could not be launched",
                 response: response
             });
+
+            trackAction("encountered-error");
+            trackAction("encountered-instance-error", { details: response });
     });
 
     // Since this is triggered from the images page, navigate off
@@ -180,6 +186,8 @@ export default {
                 title: "Project could not be created",
                 response: response
             });
+            trackAction("encountered-error");
+            trackAction("encountered-instance-error", { details: response });
         });
     },
 

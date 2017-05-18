@@ -1,3 +1,5 @@
+import { trackAction } from 'utilities/userActivity';
+
 import VolumeConstants from "constants/VolumeConstants";
 import VolumeState from "models/VolumeState";
 import Badges from "Badges";
@@ -90,6 +92,8 @@ export default {
             Utils.dispatch(VolumeConstants.POLL_VOLUME, {
                 volume: volume
             });
+            trackAction("encountered-error");
+            trackAction("encountered-volume-error");
         });
 
 

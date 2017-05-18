@@ -1,3 +1,4 @@
+import { trackAction } from 'utilities/userActivity';
 
 import VolumeConstants from "constants/VolumeConstants";
 import VolumeState from "models/VolumeState";
@@ -5,6 +6,7 @@ import stores from "stores";
 import Utils from "../Utils";
 import globals from "globals";
 import ProjectVolumeConstants from "constants/ProjectVolumeConstants";
+
 
 export default {
 
@@ -60,6 +62,8 @@ export default {
                 title: "Your volume could not be deleted",
                 response: response
             });
+            trackAction("encountered-error");
+            trackAction("encountered-volume-error", { details: response });
         });
     },
 };
