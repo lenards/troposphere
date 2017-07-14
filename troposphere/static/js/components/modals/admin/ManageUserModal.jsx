@@ -28,7 +28,8 @@ export default React.createClass({
     },
 
     confirm: function() {
-        console.log("A user Action will get called here");
+        // FIXME: determine the action should be be called here
+        //console.log("A user Action will get called here");
     },
 
     render: function() {

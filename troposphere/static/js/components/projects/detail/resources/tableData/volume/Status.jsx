@@ -47,7 +47,8 @@ export default React.createClass({
             if (instance) {
                 placeholderMessage = "Attached to " + instance.get("name");
             } else {
-                console.error("Volume cannot be in use and not attached to an instance");
+                //  TODO: consider offering this feedback to our community member
+                //console.error("Volume cannot be in use and not attached to an instance");
             }
         } else {
             lightStatus = "transition";
