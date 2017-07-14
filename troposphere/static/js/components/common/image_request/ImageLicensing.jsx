@@ -17,7 +17,11 @@ export default React.createClass({
         });
     },
     removeLicenseFromList: function(license_id) {
+        // FIXME: it would seem that we should be removing from props.license_list
+        //        - this should be investigated
+        /* eslint-disable no-console */
         console.log("Remove", license_id);
+        /* eslint-enable no-console */
     },
     renderForm: function() {
         return (
