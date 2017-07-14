@@ -138,9 +138,15 @@ export default React.createClass({
 
             index = list.indexOf(current);
             if (current != null && index == -1) {
+                /* eslint-disable no-console */
                 console.warn(
                     "SelectMenu: The element to display ("+current+") doesn't exist in the list of available elements"
                 );
+<<<<<<< HEAD
+=======
+                console.log(current)
+                /* eslint-enable no-console */
+>>>>>>> Allow console statements for select menus
             }
         }
 
