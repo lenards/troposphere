@@ -36,7 +36,7 @@ const NullProjectMigrateResourceModal = React.createClass({
         //FIXME: This will fail if id == id, this should be UUIDs! set 'get_uuid()' for each resource-model and call that, instead.
         resourceProjectMap[resource.id] = {
             resource,
-            project,
+            project
         }
         this.setState({
             resourceProjectMap
@@ -73,7 +73,7 @@ const NullProjectMigrateResourceModal = React.createClass({
         var initialState = {
             projectName: "",
             groupOwner: null,
-            resourceProjectMap,
+            resourceProjectMap
         };
 
         return initialState;
@@ -318,7 +318,7 @@ const NullProjectMigrateResourceModal = React.createClass({
     },
     onGroupChange: function(group) {
         this.setState({
-            groupOwner: group,
+            groupOwner: group
         });
     },
     onProjectNameChange: function(e) {
@@ -331,7 +331,7 @@ const NullProjectMigrateResourceModal = React.createClass({
         let project_params = {
                 name: projectName,
                 description: projectName,
-                owner: this.state.groupOwner,
+                owner: this.state.groupOwner
             };
         actions.ProjectActions.create(
             project_params, this.onProjectCreated, this.onProjectCreateFailed);

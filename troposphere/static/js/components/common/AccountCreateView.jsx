@@ -33,7 +33,7 @@ export default React.createClass({
             provider: null,
             quota: null,
             createAccount: false,
-            adminAccount: false,
+            adminAccount: false
         };
     },
 
@@ -183,13 +183,13 @@ export default React.createClass({
 
     onAdminAccountChange: function(new_status, e) {
         this.setState({
-            adminAccount: new_status,
+            adminAccount: new_status
         });
     },
 
     onCreateAccountChange: function(new_status, e) {
         this.setState({
-            createAccount: new_status,
+            createAccount: new_status
         });
     },
 

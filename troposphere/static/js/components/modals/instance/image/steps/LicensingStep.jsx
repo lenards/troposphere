@@ -16,14 +16,14 @@ export default React.createClass({
     getDefaultProps: function() {
         return {
             licenses: new Backbone.Collection(),
-            activeLicenses: new Backbone.Collection(),
+            activeLicenses: new Backbone.Collection()
         };
     },
 
     getInitialState: function() {
         return {
             licenses: this.props.licenses,
-            activeLicenses: this.props.activeLicenses,
+            activeLicenses: this.props.activeLicenses
         }
     },
 

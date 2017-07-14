@@ -48,7 +48,7 @@ export default React.createClass({
         let image_metrics = stores.ImageMetricsStore.fetchWhere(
             {
                 'page_size': 1000,
-                'interval': 'daily',
+                'interval': 'daily'
             }
         );
         if(!image_metrics) {
@@ -65,7 +65,7 @@ export default React.createClass({
         let image_metrics = stores.ImageMetricsStore.fetchWhere(
             {
                 'page_size': 1000,
-                'interval': 'weekly',
+                'interval': 'weekly'
             }
         );
         if(!image_metrics) {
@@ -137,12 +137,12 @@ export default React.createClass({
         } else if(selectedText == "Daily") {
             all_metrics = stores.ImageMetricsStore.fetchWhere({
                 'page_size': 1000,
-                'interval': 'daily',
+                'interval': 'daily'
             });
         } else if(selectedText == "Weekly") {
             all_metrics = stores.ImageMetricsStore.fetchWhere({
                 'page_size': 1000,
-                'interval': 'weekly',
+                'interval': 'weekly'
             });
         }
         var summaryData = this.state.summaryData;
@@ -152,7 +152,7 @@ export default React.createClass({
         this.setState({
             activeChart: selectedText,
             metricsData: all_metrics,
-            summaryData,
+            summaryData
         });
 
         return;

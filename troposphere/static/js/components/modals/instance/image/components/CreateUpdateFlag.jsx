@@ -6,7 +6,7 @@ export default React.createClass({
 
     propTypes: {
         onChange: React.PropTypes.func.isRequired,
-        value: React.PropTypes.bool.isRequired,
+        value: React.PropTypes.bool.isRequired
     },
 
     handleChange: function(e) {

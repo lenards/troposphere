@@ -12,7 +12,7 @@ const GroupCreateView = React.createClass({
     },
     getDefaultProps: function() {
         return {
-            group: new Backbone.Model(),
+            group: new Backbone.Model()
         }
     },
     getInitialState: function() {

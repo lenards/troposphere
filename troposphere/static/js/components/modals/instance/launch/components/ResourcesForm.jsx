@@ -15,7 +15,7 @@ import SelectMenu from "components/common/ui/SelectMenu";
 const ExclamationMark = React.createClass({
     getInitialState() {
         return {
-            opacity: "0.4",
+            opacity: "0.4"
         };
     },
     onMouseOver() {
@@ -135,6 +135,7 @@ const ResourcesForm = React.createClass({
         </label>
         );
     },
+
     renderProvider() {
         let { provider, providerList, onProviderChange } = this.props;
 
@@ -191,7 +192,7 @@ const ResourcesForm = React.createClass({
             </div>
         </form>
         );
-    },
+    }
 });
 
 export default subscribe(

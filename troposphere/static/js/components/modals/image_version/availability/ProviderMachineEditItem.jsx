@@ -15,7 +15,7 @@ export default React.createClass({
 
     getDefaultProps: function() {
         return {
-            allow_edits: true,
+            allow_edits: true
         };
     },
     getInitialState: function() {

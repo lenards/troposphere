@@ -2,14 +2,14 @@ import React from "react";
 
 export default React.createClass({
     propTypes: {
-        message: React.PropTypes.string.isRequired,
+        message: React.PropTypes.string.isRequired
     },
 
     getInitialState: function() {
         return ({
             animate: {
                 opacity: "0",
-                bottom: "55px",
+                bottom: "55px"
             }
         })
     },
@@ -19,7 +19,7 @@ export default React.createClass({
             this.setState({
                 animate: {
                     opacity: "1",
-                    bottom: "60px",
+                    bottom: "60px"
                 }
             })
         }
@@ -37,7 +37,7 @@ export default React.createClass({
             boxShadow: "0px 2px 5px 0px rgba(0,0,0,.6)",
             borderRadius: "3px",
             color: "white",
-            textAlign: "center",
+            textAlign: "center"
 
         },
         originPoint: {
@@ -48,14 +48,14 @@ export default React.createClass({
             margin: "auto",
             width: "10px",
             border: "solid 10px rgba(0,0,0,0)",
-            borderTop: "solid 10px black",
-        },
+            borderTop: "solid 10px black"
+        }
     },
 
     render: function() {
 
         return (
-        <div style={{ ...this.style.content, ...this.state.animate, }}>
+        <div style={{ ...this.style.content, ...this.state.animate }}>
             <div>
                 {this.props.message}
             </div>

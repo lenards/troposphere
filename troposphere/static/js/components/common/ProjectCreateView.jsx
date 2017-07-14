@@ -247,7 +247,7 @@ const ProjectCreateView = React.createClass({
     },
     onGroupChange: function(group) {
         this.setState({
-            groupOwner: group,
+            groupOwner: group
         });
     },
 

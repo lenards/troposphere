@@ -13,7 +13,7 @@ const ResourceSelectMenu = React.createClass({
         project: React.PropTypes.instanceOf(Backbone.Model),
         projects: React.PropTypes.instanceOf(Backbone.Collection).isRequired,
         onProjectSelected: React.PropTypes.func.isRequired,
-        optionName: React.PropTypes.func,
+        optionName: React.PropTypes.func
     },
     getInitialState: function() {
         return {

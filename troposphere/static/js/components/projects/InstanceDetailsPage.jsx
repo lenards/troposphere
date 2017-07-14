@@ -57,7 +57,7 @@ export default React.createClass({
             project,
             instance,
             helpLinks,
-            allocationSources,
+            allocationSources
         }
 
         return (

@@ -26,7 +26,7 @@ const InstanceDetail = React.createClass({
         var instanceHistory = history.first(),
             instance = instanceHistory.get('instance'),
             instanceObj = InstanceStore.fetchOne(instance.id, {
-                archived: true,
+                archived: true
             });
 
         if(!instanceObj) {
@@ -101,7 +101,7 @@ const InstanceDetail = React.createClass({
         }
 
         return this.renderActiveInstance(instance);
-    },
+    }
 
 });
 

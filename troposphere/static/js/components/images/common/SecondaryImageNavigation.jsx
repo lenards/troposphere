@@ -70,7 +70,7 @@ export default React.createClass({
                 this.renderRoute(myFavoritedImagesText, "favorites", "bookmark", true),
                 this.renderRoute(myImagesText, "authored", "user", true),
                 this.renderRoute("My Image Requests", "my-image-requests", "export", true),
-                this.renderRoute("Tags", "tags", "tags", false),
+                this.renderRoute("Tags", "tags", "tags", false)
             ];
         }
 

@@ -21,7 +21,7 @@ export default React.createClass({
             query: this.props.query || "",
             isLoadingMoreResults: false,
             nextUrl: null,
-            viewType: "list",
+            viewType: "list"
         }
     },
 
@@ -62,7 +62,7 @@ export default React.createClass({
 
         this.setState({
             isLoadingMoreResults,
-            nextUrl,
+            nextUrl
         });
 
     },

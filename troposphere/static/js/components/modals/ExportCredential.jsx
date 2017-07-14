@@ -45,7 +45,7 @@ export default React.createClass({
     getInitialState() {
         return {
             identityUUID: "",
-            step: 0,
+            step: 0
         }
     },
 

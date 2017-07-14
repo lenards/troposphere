@@ -50,12 +50,12 @@ export default React.createClass({
                 display: "flex",
                 flexWrap: "wrap",
                 alignItems: "flex-start",
-                justifyContent: "space-between",
+                justifyContent: "space-between"
             }}
         >
             <div
                 style={{
-                    marginBottom: "10px",
+                    marginBottom: "10px"
                 }}
             >
                 <SubMenu { ...this.props }/>

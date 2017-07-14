@@ -6,7 +6,7 @@ export default React.createClass({
     displayName: "ImageLicensing",
 
     propTypes: {
-        license_list: React.PropTypes.instanceOf(Backbone.Collection).isRequired,
+        license_list: React.PropTypes.instanceOf(Backbone.Collection).isRequired
     },
 
     addLicenseToList: function(license) {
@@ -62,5 +62,5 @@ export default React.createClass({
             existing_items={this.props.license_list}
             title="Image Licensing" />
         );
-    },
+    }
 });

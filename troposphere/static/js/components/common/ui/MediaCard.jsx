@@ -11,7 +11,7 @@ export default React.createClass({
             title,
             subheading,
             summary,
-            detail,
+            detail
         } = this.props;
 
         return (
@@ -65,7 +65,7 @@ export default React.createClass({
         if (isOpen) {
             cardMargin = {
                 marginTop: "20px",
-                marginBottom: "20px",
+                marginBottom: "20px"
             };
         }
         styles.card = {
@@ -73,7 +73,7 @@ export default React.createClass({
             padding: "10px",
             boxShadow: "0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24)",
             background: 'white',
-            ...cardMargin,
+            ...cardMargin
         }; 
 
         // header
@@ -99,7 +99,7 @@ export default React.createClass({
             display: "table",
             borderRadius: "50%",
             overflow: "hidden",
-            marginRight: "20px",
+            marginRight: "20px"
         };
 
         // title section
@@ -110,12 +110,12 @@ export default React.createClass({
 
         // title
         styles.title = {
-            marginBottom: "0",
+            marginBottom: "0"
         };
 
         // subheading
         styles.subheading = {
-             fontSize: "12px",
+             fontSize: "12px"
         };
 
         // summary
@@ -138,5 +138,5 @@ export default React.createClass({
         };
        
         return styles
-    },
+    }
 });

@@ -17,7 +17,7 @@ export default React.createClass({
         multipleSelected: React.PropTypes.bool.isRequired,
         previewedResource: React.PropTypes.instanceOf(Backbone.Model),
         project: React.PropTypes.instanceOf(Backbone.Model),
-        volume: React.PropTypes.instanceOf(Backbone.Model),
+        volume: React.PropTypes.instanceOf(Backbone.Model)
     },
 
     render: function() {

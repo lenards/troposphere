@@ -13,7 +13,7 @@ export default React.createClass({
     getDefaultProps: function() {
         return {
             create: false,
-            update: false,
+            update: false
         };
     },
     handleChange: function(e) {

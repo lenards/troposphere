@@ -35,7 +35,7 @@ export default React.createClass({
         ]).isRequired,
         disabled: React.PropTypes.bool,
         current: React.PropTypes.object,
-        placeholder: React.PropTypes.string,
+        placeholder: React.PropTypes.string
     },
 
     getDefaultProps() {
@@ -65,7 +65,7 @@ export default React.createClass({
         }
 
         return {
-            list,
+            list
         }
     },
 
@@ -80,7 +80,7 @@ export default React.createClass({
         return {
             label,
             key: index,
-            value: index,
+            value: index
         }
     },
 

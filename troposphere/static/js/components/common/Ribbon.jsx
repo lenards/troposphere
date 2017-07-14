@@ -31,7 +31,7 @@ export default React.createClass({
                 display: "inline-block",
                 padding: "3px 5px",
                 color: "white",
-                fontSize: "10px",
+                fontSize: "10px"
             },
             merged = _.extend(style, override);
 

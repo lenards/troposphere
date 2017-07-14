@@ -81,7 +81,7 @@ export default React.createClass({
             chart: {
                 type: "bar",
                 backgroundColor: "transparent",
-                height,
+                height
             },
             colors: [
                 "#0098aa",
@@ -100,7 +100,7 @@ export default React.createClass({
             },
             xAxis: {
                 type: "category",
-                categories,
+                categories
             },
             yAxis: {
                 min: 0,

@@ -112,7 +112,7 @@ export default React.createClass({
         let userContext = {
             id: profile.get('user'),
             email: profile.get('email'),
-            username: profile.get('username'),
+            username: profile.get('username')
         }
         Raven.setUserContext(userContext);
         Raven.setTagsContext(window.SENTRY_TAGS);

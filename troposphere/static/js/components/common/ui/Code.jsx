@@ -19,7 +19,7 @@ const computeStyles = ({ mb }) => {
         "Liberation Mono",
         "DejaVu Sans Mono",
         "Bitstream Vera Sans Mono",
-        "Courier New",
+        "Courier New"
     ];
 
     styles.container = {
@@ -34,7 +34,7 @@ const computeStyles = ({ mb }) => {
         border: "solid 1px #d6d4d4",
         display: "inline-block",
         background: "#efefef",
-        borderRadius: "2px",
+        borderRadius: "2px"
     };
 
     return styles

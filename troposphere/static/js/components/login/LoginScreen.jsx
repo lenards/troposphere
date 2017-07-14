@@ -22,7 +22,7 @@ export default React.createClass({
 
     getDefaultProps: function() {
         return {
-            login_from: "application",
+            login_from: "application"
         };
     },
     getInitialState: function() {

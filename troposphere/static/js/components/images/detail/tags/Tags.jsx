@@ -8,7 +8,7 @@ const Tags = React.createClass({
     displayName: "Tags",
 
     propTypes: {
-        activeTags: React.PropTypes.array,
+        activeTags: React.PropTypes.array
     },
 
     onTagClick(tag) {

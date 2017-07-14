@@ -13,7 +13,7 @@ export default React.createClass({
                 {
                     name: "Deployment Scripts",
                     view: "BOOTSCRIPT_VIEW"
-                },
+                }
             // This is for testing options sidebar,
             // to add new options add them to this object and follow the pattern starting with renderBody below.
             /*{
@@ -24,7 +24,7 @@ export default React.createClass({
                 name: "Option 3",
                 view: "OPTION3_VIEW"
             }*/
-            ],
+            ]
         }
     },
 
@@ -37,13 +37,13 @@ export default React.createClass({
 
     onDisableFooter: function() {
         this.setState({
-            footerDisabled: true,
+            footerDisabled: true
         })
     },
 
     onEnableFooter: function() {
         this.setState({
-            footerDisabled: false,
+            footerDisabled: false
         })
     },
 

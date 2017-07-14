@@ -80,7 +80,7 @@ export default React.createClass({
 
         this.setState({
             previewedResource: resource,
-            selectedResources,
+            selectedResources
         });
     },
 
@@ -106,7 +106,7 @@ export default React.createClass({
 
         this.setState({
             previewedResource,
-            selectedResources,
+            selectedResources
         });
     },
 

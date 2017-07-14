@@ -29,7 +29,7 @@ export default React.createClass({
             name: item.get("name"),
             data: [percentage],
             limits: {
-                Allocation: item.get("compute_allowed"),
+                Allocation: item.get("compute_allowed")
             },
             appendMessages: {
                 Allocation: messages.unitAbbrev

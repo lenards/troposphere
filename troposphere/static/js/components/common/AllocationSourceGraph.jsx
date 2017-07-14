@@ -8,7 +8,7 @@ import messages from "messages/allocationMessages";
 export default React.createClass({
 
     propTypes: {
-        allocationSource: React.PropTypes.instanceOf(Backbone.Model),
+        allocationSource: React.PropTypes.instanceOf(Backbone.Model)
     },
 
     // This is what we show if the instance will exceed our resources.
@@ -58,5 +58,5 @@ export default React.createClass({
             {this.resourceExceded(consumed, total)}
         </div>
         )
-    },
+    }
 });

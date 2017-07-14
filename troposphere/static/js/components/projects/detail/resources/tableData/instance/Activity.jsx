@@ -15,7 +15,7 @@ var Activity = React.createClass({
 
     getInitialState() {
         return {
-            opacity: "0.68",
+            opacity: "0.68"
         };
     },
     onMouseOver() {

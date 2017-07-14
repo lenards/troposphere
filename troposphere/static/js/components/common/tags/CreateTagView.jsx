@@ -12,7 +12,7 @@ export default React.createClass({
     getInitialState: function() {
         return {
             tagName: this.props.tagName || "",
-            tagDescription: "",
+            tagDescription: ""
         }
     },
     isSubmittable: function() {

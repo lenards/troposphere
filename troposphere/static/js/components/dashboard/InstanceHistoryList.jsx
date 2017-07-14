@@ -84,7 +84,7 @@ export default React.createClass({
         // Load more instances from history
         var buttonStyle = {
                 display: "table",
-                margin: "auto",
+                margin: "auto"
             },
             loadingStyle = {
                 margin: "0px auto"

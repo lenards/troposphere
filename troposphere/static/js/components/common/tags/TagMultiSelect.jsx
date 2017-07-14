@@ -19,13 +19,13 @@ export default React.createClass({
         //Necessary for modal creation (Where available)
         onCreateNewTag: React.PropTypes.func,
         //Necessary for inline creation (when modals aren't an option)
-        onModelCreated: React.PropTypes.func,
+        onModelCreated: React.PropTypes.func
     },
 
     getInitialState: function() {
         return {
             showCreateForm: false,
-            tagName: "",
+            tagName: ""
         }
     },
 
@@ -126,5 +126,5 @@ export default React.createClass({
         }
         this.clearSearchField();
 
-    },
+    }
 })

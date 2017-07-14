@@ -239,7 +239,7 @@ export default React.createClass({
         styles.content = {
             display: contentDisplay,
             flexWrap: "wrap",
-            justifyContent: "space-between",
+            justifyContent: "space-between"
         };
 
         // description
@@ -258,16 +258,16 @@ export default React.createClass({
         // availability
         let availabilityWidth = isOpen
             ? {
-                width: "100%",
+                width: "100%"
             }
             : {
                 width: "30%",
-                minWidth: "200px",
+                minWidth: "200px"
             };
 
         styles.availability = {
             fontSize: "12px",
-            ...availabilityWidth,
+            ...availabilityWidth
         };
 
         // return result

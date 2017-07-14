@@ -201,6 +201,6 @@ export default React.createClass({
             </table>
         </div>
         );
-    },
+    }
 
 });

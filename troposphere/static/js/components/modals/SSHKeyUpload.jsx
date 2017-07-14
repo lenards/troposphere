@@ -8,7 +8,7 @@ export default React.createClass({
         return {
             keyName: "",
             pubKey: "",
-            errorMsg: "",
+            errorMsg: ""
         }
     },
 
@@ -89,11 +89,11 @@ export default React.createClass({
         stores.SSHKeyStore.models.create({
             atmo_user: this.props.user,
             name: this.state.keyName,
-            pub_key: this.state.pubKey,
+            pub_key: this.state.pubKey
         }, {
             success: function() {
                 stores.SSHKeyStore.emitChange();
-            },
+            }
         });
     },
 

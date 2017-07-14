@@ -19,7 +19,7 @@ export default React.createClass({
     propTypes: {
         instance: React.PropTypes.instanceOf(Backbone.Model).isRequired,
         imageOwner: React.PropTypes.bool.isRequired,
-        helpLink: React.PropTypes.instanceOf(Backbone.Model).isRequired,
+        helpLink: React.PropTypes.instanceOf(Backbone.Model).isRequired
     },
 
     componentDidMount: function() {
@@ -49,7 +49,7 @@ export default React.createClass({
             nameError: this.setNameError(defaultName),
             description: defaultDescription,
             newImage: true,
-            imageTags,
+            imageTags
         }
     },
 

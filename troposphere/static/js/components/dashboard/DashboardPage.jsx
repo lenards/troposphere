@@ -127,7 +127,7 @@ export default React.createClass({
                         <RaisedButton
                             style={{
                                 marginLeft: "20px",
-                                marginBottom: "10px",
+                                marginBottom: "10px"
                             }}
                             primary
                             onTouchTap={this.renderRequestMoreResources}

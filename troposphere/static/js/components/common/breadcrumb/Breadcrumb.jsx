@@ -7,7 +7,7 @@ export default React.createClass({
     propTypes: {
         breadcrumb: React.PropTypes.object.isRequired,
         onClick: React.PropTypes.func.isRequired,
-        breadcrumbText: React.PropTypes.number.isRequired,
+        breadcrumbText: React.PropTypes.number.isRequired
     },
 
     mouseOver: function() {

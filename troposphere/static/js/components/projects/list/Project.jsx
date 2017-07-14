@@ -14,7 +14,7 @@ const Project = React.createClass({
 
     propTypes: {
         project: React.PropTypes.instanceOf(Backbone.Model).isRequired,
-        className: React.PropTypes.string,
+        className: React.PropTypes.string
     },
     getLeaderNames: function(project) {
         if(!project) {

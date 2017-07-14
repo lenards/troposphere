@@ -26,14 +26,14 @@ export default React.createClass({
         titleText: React.PropTypes.string,
         hideButtonText: React.PropTypes.string,
         showButtonText: React.PropTypes.string,
-        createButtonText: React.PropTypes.string,
+        createButtonText: React.PropTypes.string
 
     },
 
     getInitialState: function() {
         return {
             showCreateForm: this.props.showCreateForm,
-            licenseTitle: "",
+            licenseTitle: ""
         }
     },
 
@@ -44,7 +44,7 @@ export default React.createClass({
             showButtonText: "Create New License",
             hideButtonText: "Cancel",
             showCreateForm: false,
-            width: "550px",
+            width: "550px"
         }
     },
     onEnterKeyPressed: function(value) {

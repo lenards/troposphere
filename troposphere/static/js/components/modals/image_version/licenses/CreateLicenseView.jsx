@@ -15,7 +15,7 @@ export default React.createClass({
             licenseTitle: this.props.licenseTitle || "",
             licenseType: "URL",
             licenseURL: "",
-            licenseText: "",
+            licenseText: ""
         }
     },
     isSubmittable: function() {

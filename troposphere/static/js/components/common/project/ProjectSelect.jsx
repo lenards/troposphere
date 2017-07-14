@@ -10,7 +10,7 @@ export default React.createClass({
         projectId: React.PropTypes.number.isRequired,
         projects: React.PropTypes.instanceOf(Backbone.Collection).isRequired,
         onChange: React.PropTypes.func.isRequired,
-        showCreate: React.PropTypes.bool,
+        showCreate: React.PropTypes.bool
     },
 
     getInitialState: function() {
@@ -19,7 +19,7 @@ export default React.createClass({
             showCreate = true
         }
         return {
-            showCreate: showCreate,
+            showCreate: showCreate
         }
     },
 

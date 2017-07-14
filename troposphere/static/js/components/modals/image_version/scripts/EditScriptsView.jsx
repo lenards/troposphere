@@ -26,7 +26,7 @@ export default React.createClass({
     },
     getInitialState: function() {
         return {
-            query: "",
+            query: ""
         }
     },
     onQueryChange: function(query) {

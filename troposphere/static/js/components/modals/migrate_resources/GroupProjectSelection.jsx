@@ -37,7 +37,7 @@ export default React.createClass({
         var initialState = {
             projectName: "",
             resourceProjectMap,
-            resourceGroupsMap,
+            resourceGroupsMap
         };
 
         return initialState;
@@ -53,7 +53,7 @@ export default React.createClass({
 
         var state = {
             resourceGroupsMap,
-            projectName,
+            projectName
         };
         return state;
     },
@@ -90,7 +90,7 @@ export default React.createClass({
         let { resourceProjectMap } = this.state;
         resourceProjectMap[resource.id] = {
             resource,
-            project,
+            project
         }
         this.setState({
             resourceProjectMap
@@ -153,7 +153,7 @@ export default React.createClass({
         let project_params = {
                 name: projectName,
                 description: projectName,
-                owner: this.props.group,
+                owner: this.props.group
             };
         actions.ProjectActions.create(
             project_params, this.onProjectCreated, this.onProjectCreateFailed);

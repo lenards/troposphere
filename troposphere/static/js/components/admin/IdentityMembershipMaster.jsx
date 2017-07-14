@@ -17,7 +17,7 @@ export default React.createClass({
             query: "",
             selectedProviderId: -1,
             memberships: stores.IdentityMembershipStore.getAll(),
-            allModels: null,
+            allModels: null
         };
     },
 
@@ -28,14 +28,14 @@ export default React.createClass({
         if (query !== null && query !== "" && selected !== -1) {
             memberships = stores.IdentityMembershipStore.fetchWhere({
                 username: query,
-                provider_id: selected,
+                provider_id: selected
             });
         } else {
             memberships = stores.IdentityMembershipStore.getAll();
         }
 
         this.setState({
-            memberships,
+            memberships
         });
     },
 

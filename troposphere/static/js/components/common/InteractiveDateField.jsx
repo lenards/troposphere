@@ -10,7 +10,7 @@ export default React.createClass({
     propTypes: {
         value: React.PropTypes.string,
         labelText: React.PropTypes.string,
-        onChange: React.PropTypes.func.isRequired,
+        onChange: React.PropTypes.func.isRequired
     },
 
     getInitialState: function() {

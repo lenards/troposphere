@@ -27,14 +27,14 @@ export default React.createClass({
         titleText: React.PropTypes.string,
         hideButtonText: React.PropTypes.string,
         showButtonText: React.PropTypes.string,
-        createButtonText: React.PropTypes.string,
+        createButtonText: React.PropTypes.string
 
     },
 
     getInitialState: function() {
         return {
             showCreateForm: this.props.showCreateForm,
-            scriptTitle: "",
+            scriptTitle: ""
         }
     },
 
@@ -44,7 +44,7 @@ export default React.createClass({
             createButtonText: "Add to Scripts",
             showButtonText: "Create New Script",
             hideButtonText: "Cancel",
-            showCreateForm: false,
+            showCreateForm: false
         }
     },
     onEnterKeyPressed: function(value) {

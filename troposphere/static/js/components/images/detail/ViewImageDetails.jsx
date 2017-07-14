@@ -51,7 +51,7 @@ export default React.createClass({
                 top: "-6px",
                 left: "-9px",
                 padding: "3px 7px",
-                fontSize: "11px",
+                fontSize: "11px"
             };
 
             return (
@@ -70,17 +70,17 @@ export default React.createClass({
                 position: "relative",
                 display: "flex",
                 alignItems: "flex-start",
-                marginBottom: "80px",
+                marginBottom: "80px"
             },
             img: {
                 borderRadius: "999px",
                 overflow: "hidden",
                 marginRight: "20px",
-                minWidth: "50px",
+                minWidth: "50px"
             },
             details: {
                 marginBottom: "20px",
-                minWidth: "600px",
+                minWidth: "600px"
             }
         };
 

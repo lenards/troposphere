@@ -12,7 +12,7 @@ export default React.createClass({
         return {
             displayMoreInfo: false,
             profile: profile,
-            ssh_keys: stores.SSHKeyStore.getAll(),
+            ssh_keys: stores.SSHKeyStore.getAll()
         };
     },
 

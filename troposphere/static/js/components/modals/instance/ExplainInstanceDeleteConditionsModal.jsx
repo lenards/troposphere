@@ -9,7 +9,7 @@ export default React.createClass({
 
     propTypes: {
         attachedVolumes: React.PropTypes.instanceOf(VolumeCollection).isRequired,
-        onConfirm: React.PropTypes.func.isRequired,
+        onConfirm: React.PropTypes.func.isRequired
     },
 
     mixins: [BootstrapModalMixin],

@@ -12,7 +12,7 @@ export default React.createClass({
     displayName: "NotFoundPage",
 
     proptypes: {
-        resource: PropTypes.string,
+        resource: PropTypes.string
     },
 
     render: function() {

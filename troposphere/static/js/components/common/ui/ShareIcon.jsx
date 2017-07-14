@@ -10,7 +10,7 @@ export default React.createClass({
 
     getDefaultProps() {
         return {
-            isLeader: false,
+            isLeader: false
         };
     },
     getInitialState() {
@@ -22,7 +22,7 @@ export default React.createClass({
         return {
             opacity: "0.4",
             color,
-            tip,
+            tip
         };
     },
     onMouseOver() {

@@ -22,7 +22,7 @@ export default React.createClass({
             licenses: new Backbone.Collection(),
             activeLicenses: new Backbone.Collection(),
             scripts: new Backbone.Collection(),
-            activeScripts: new Backbone.Collection(),
+            activeScripts: new Backbone.Collection()
         };
     },
 
@@ -31,7 +31,7 @@ export default React.createClass({
             licenses: this.props.licenses,
             activeLicenses: this.props.activeLicenses,
             scripts: this.props.scripts,
-            activeScripts: this.props.activeScripts,
+            activeScripts: this.props.activeScripts
 
         }
     },

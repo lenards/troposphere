@@ -38,13 +38,13 @@ export default React.createClass({
                 backgroundColor: "transparent",
                 margin:[0, 0, 0, 0],
                 width,
-                height,
+                height
             },
             credits: {
                 enabled: false
             },
             title: {
-                text: this.props.title,
+                text: this.props.title
             },
             xAxis: {
                 labels:{

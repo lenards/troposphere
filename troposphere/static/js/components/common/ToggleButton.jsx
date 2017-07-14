@@ -9,12 +9,12 @@ export default React.createClass({
         enabled_text: React.PropTypes.string,
         disabled_text: React.PropTypes.string,
         isEnabled: React.PropTypes.bool,
-        onToggle: React.PropTypes.func.isRequired,
+        onToggle: React.PropTypes.func.isRequired
     },
 
     getInitialState() {
         return {
-            isEnabled: this.props.isEnabled || false,
+            isEnabled: this.props.isEnabled || false
         };
     },
 
@@ -66,7 +66,7 @@ export default React.createClass({
             cursor: "pointer",
             position: "relative",
             paddingTop: "1px",
-            width: "120px",
+            width: "120px"
         };
 
         let toggleBGColor = isEnabled
@@ -81,7 +81,7 @@ export default React.createClass({
             height: "20px",
             borderRadius: "900px",
             backgroundColor: toggleBGColor,
-            transition: "background-color ease .2s",
+            transition: "background-color ease .2s"
         };
 
         let textColor = isEnabled
@@ -91,7 +91,7 @@ export default React.createClass({
             textAlign: "center",
             color: textColor,
             fontWeight: "100",
-            fontSize: "12px",
+            fontSize: "12px"
         };
 
         let switchBGColor = isEnabled

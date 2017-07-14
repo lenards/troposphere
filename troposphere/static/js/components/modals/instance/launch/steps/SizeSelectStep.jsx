@@ -14,7 +14,7 @@ export default React.createClass({
         identity: React.PropTypes.instanceOf(Backbone.Model).isRequired,
         size: React.PropTypes.instanceOf(Backbone.Model),
         onPrevious: React.PropTypes.func.isRequired,
-        onNext: React.PropTypes.func.isRequired,
+        onNext: React.PropTypes.func.isRequired
     },
 
 

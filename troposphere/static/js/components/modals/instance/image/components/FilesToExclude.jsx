@@ -13,7 +13,7 @@ export default React.createClass({
         return {
             //Add default styling here..?
             styles: {
-            },
+            }
         };
     },
     handleChange: function(e) {

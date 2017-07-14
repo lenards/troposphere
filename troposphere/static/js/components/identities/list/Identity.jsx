@@ -12,7 +12,7 @@ export default React.createClass({
 
     propTypes: {
         identity: React.PropTypes.instanceOf(Backbone.Model).isRequired,
-        className: React.PropTypes.string,
+        className: React.PropTypes.string
     },
 
     componentDidMount: function() {

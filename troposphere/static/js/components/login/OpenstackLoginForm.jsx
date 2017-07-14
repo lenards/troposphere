@@ -8,7 +8,7 @@ export default React.createClass({
     displayName: "OpenstackLoginForm",
 
     propTypes: {
-        attemptLogin: React.PropTypes.func.isRequired,
+        attemptLogin: React.PropTypes.func.isRequired
     },
 
     //
@@ -73,7 +73,7 @@ export default React.createClass({
 
     attemptLogin: function() {
         this.setState({
-            allowLogin: false,
+            allowLogin: false
         });
         this.props.attemptLogin(
             this.state.username,

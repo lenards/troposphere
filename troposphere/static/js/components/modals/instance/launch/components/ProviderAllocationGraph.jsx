@@ -4,7 +4,7 @@ import ProgressBar from "components/common/ui/ProgressBar";
 export default React.createClass({
     propTypes: {
         onRequestResources: React.PropTypes.func,
-        resourcesUsed: React.PropTypes.object,
+        resourcesUsed: React.PropTypes.object
     },
 
     // This is what we show if the instance will exceed our resources.
@@ -57,5 +57,5 @@ export default React.createClass({
             {this.resourceExceded(allocationConsumed, allocationTotal)}
         </div>
         )
-    },
+    }
 });

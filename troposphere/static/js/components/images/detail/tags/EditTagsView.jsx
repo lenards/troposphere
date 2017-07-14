@@ -37,7 +37,7 @@ export default React.createClass({
 
     onQueryChange: function(query) {
         this.setState({
-            query,
+            query
         });
     },
 

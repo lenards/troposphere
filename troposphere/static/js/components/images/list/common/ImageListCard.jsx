@@ -20,7 +20,7 @@ const ImageListCard = React.createClass({
 
     propTypes: {
         image: React.PropTypes.instanceOf(Backbone.Model).isRequired,
-        metric: React.PropTypes.instanceOf(Backbone.Model),
+        metric: React.PropTypes.instanceOf(Backbone.Model)
     },
 
     onCardClick() {
@@ -119,7 +119,7 @@ const ImageListCard = React.createClass({
                     style={{
                         position: "absolute",
                         top: "10px",
-                        right: "10px",
+                        right: "10px"
                     }}
                 >
                     <Bookmark width="15px" image={image} />

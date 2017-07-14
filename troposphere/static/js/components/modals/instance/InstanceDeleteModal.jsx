@@ -12,7 +12,7 @@ export default React.createClass({
 
     propTypes: {
         instance: React.PropTypes.instanceOf(InstanceModel).isRequired,
-        onConfirm: React.PropTypes.func.isRequired,
+        onConfirm: React.PropTypes.func.isRequired
     },
 
     confirm() {

@@ -9,7 +9,7 @@ export default React.createClass({
         viewAdvanced: React.PropTypes.func,
         onSubmitLaunch: React.PropTypes.func,
         onCancel: React.PropTypes.func,
-        onBack: React.PropTypes.func,
+        onBack: React.PropTypes.func
     },
 
     advancedIcon: function() {

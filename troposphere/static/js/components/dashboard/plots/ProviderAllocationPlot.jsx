@@ -8,7 +8,7 @@ export default React.createClass({
 
     propTypes: {
         providers: React.PropTypes.instanceOf(Backbone.Collection).isRequired,
-        identities: React.PropTypes.instanceOf(Backbone.Collection).isRequired,
+        identities: React.PropTypes.instanceOf(Backbone.Collection).isRequired
     },
 
     //
@@ -39,7 +39,7 @@ export default React.createClass({
                 Allocation: allocationUsageStats.maxAllocation
             },
             appendMessages: {
-                Allocation: "AUs",
+                Allocation: "AUs"
             },
             borderWidth: 0,
             dataLabels: {

@@ -7,7 +7,7 @@ export default React.createClass({
         onRequestResources: React.PropTypes.func,
         resourcesUsed: React.PropTypes.object,
         identityProvider: React.PropTypes.instanceOf(Backbone.Model),
-        providerSize: React.PropTypes.instanceOf(Backbone.Model),
+        providerSize: React.PropTypes.instanceOf(Backbone.Model)
     },
 
     // This is what we show if the instance will exceed our resources.
@@ -99,5 +99,5 @@ export default React.createClass({
             {this.resourceExceded(gbWillTotal, allocationGb)}
         </div>
         )
-    },
+    }
 });

@@ -15,7 +15,7 @@ export default React.createClass({
     getInitialState: function() {
         return {
             query: "",
-            users: null,
+            users: null
         };
     },
 

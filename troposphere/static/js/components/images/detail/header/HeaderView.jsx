@@ -157,15 +157,15 @@ export default React.createClass({
             },
 
             titleGroup: {
-                flex: "1",
+                flex: "1"
             },
 
             backButton: {
                 float: "left",
                 cursor: "pointer",
                 position: "relative",
-                marginRight: "10px",
-            },
+                marginRight: "10px"
+            }
         };
-    },
+    }
 });

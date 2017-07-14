@@ -29,7 +29,7 @@ export default React.createClass({
             canRefresh: false,
 
             // Set refresh interval to 1 minute
-            refreshDelay: 60 * 1000,
+            refreshDelay: 60 * 1000
         };
     },
     onSuccess: function() {
@@ -42,7 +42,7 @@ export default React.createClass({
         // Called after successfully fetching data
         this.setState({
             available: true,
-            timestamp: timestamp,
+            timestamp: timestamp
         });
     },
 
@@ -65,8 +65,8 @@ export default React.createClass({
         this.setState({
             controller: new GraphController({
                 container: document.querySelector("#graphs"),
-                width: this.state.graphWidth,
-            }),
+                width: this.state.graphWidth
+            })
         }, this.refresh);
     },
 
@@ -101,14 +101,14 @@ export default React.createClass({
 
         // Disable refresh button
         me.setState({
-            canRefresh: false,
+            canRefresh: false
         }, function() {
             this.state.controller.switch({
                 uuid: this.state.uuid,
                 from: start,
                 until: until,
                 timeframe: this.state.timeframe,
-                refresh: true,
+                refresh: true
             }, this.onSuccess, this.onError);
         });
     },

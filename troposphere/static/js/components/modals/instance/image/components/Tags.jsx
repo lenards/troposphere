@@ -37,7 +37,7 @@ export default React.createClass({
 
     updateState: function() {
         this.setState({
-            tags: stores.TagStore.getAll(),
+            tags: stores.TagStore.getAll()
         });
     },
 

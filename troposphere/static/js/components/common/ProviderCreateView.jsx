@@ -222,19 +222,19 @@ export default React.createClass({
 
     onIsPublicChange: function(new_status, e) {
         this.setState({
-            providerIsPublic: new_status,
+            providerIsPublic: new_status
         });
     },
 
     onIsActiveChange: function(new_status, e) {
         this.setState({
-            providerIsActive: new_status,
+            providerIsActive: new_status
         });
     },
 
     onImagingChange: function(new_status, e) {
         this.setState({
-            providerAllowAutoImaging: new_status,
+            providerAllowAutoImaging: new_status
         });
     },
 

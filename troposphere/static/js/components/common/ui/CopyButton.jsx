@@ -94,7 +94,7 @@ export default React.createClass({
     getInitialState() {
         return {
             feedbackState: "WAIT",
-            canCopy: false,
+            canCopy: false
         }
     },
 
@@ -107,12 +107,12 @@ export default React.createClass({
         try {
             var canCopy = document.execCommand;
             this.setState({
-                canCopy,
+                canCopy
             });
         } catch (err) {
             reportException(err);
             this.setState({
-                canCopy: false,
+                canCopy: false
             });
         }
     },
@@ -183,31 +183,31 @@ export default React.createClass({
             fontSize: "11px",
             cursor: "pointer",
             color: "#0971ab",
-            marginLeft: "10px",
+            marginLeft: "10px"
         };
 
         const feedback = {
             fontSize: "12px",
-            position: "absolute",
+            position: "absolute"
         }
 
         // Animation step styles
         const feedbackHidden = {
             position: "absolute",
             opacity: "0",
-            top: "0",
+            top: "0"
         };
 
         const feedbackShown = {
             opacity: "1",
             top: "-20px",
-            transition: "opacity .2s ease, top .15s ease",
+            transition: "opacity .2s ease, top .15s ease"
         };
 
         const feedbackOut = {
             opacity: "0",
             top: "-20px",
-            transition: "opacity .2s ease",
+            transition: "opacity .2s ease"
         };
 
         return {
@@ -215,7 +215,7 @@ export default React.createClass({
             feedback,
             feedbackHidden,
             feedbackShown,
-            feedbackOut,
+            feedbackOut
         }
-    },
+    }
 })

@@ -18,7 +18,7 @@ export default React.createClass({
         return {
             versionName: "",
             versionChanges: "",
-            newImage: true,
+            newImage: true
         };
     },
 
@@ -26,7 +26,7 @@ export default React.createClass({
         return {
             name: this.props.name,
             versionChanges: this.props.versionChanges,
-            versionName: this.props.versionName,
+            versionName: this.props.versionName
         }
     },
 
@@ -39,14 +39,14 @@ export default React.createClass({
     onPrevious: function() {
         this.props.onPrevious({
             versionName: this.state.versionName,
-            versionChanges: this.state.versionChanges,
+            versionChanges: this.state.versionChanges
         });
     },
 
     onNext: function() {
         this.props.onNext({
             versionName: $.trim(this.state.versionName),
-            versionChanges: $.trim(this.state.versionChanges),
+            versionChanges: $.trim(this.state.versionChanges)
         });
     },
 

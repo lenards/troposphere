@@ -12,7 +12,7 @@ export default React.createClass({
     mixins: [BootstrapModalMixin],
 
     propTypes: {
-        image: React.PropTypes.instanceOf(Backbone.Model).isRequired,
+        image: React.PropTypes.instanceOf(Backbone.Model).isRequired
     },
     selectFirstAvailable: function(projects, existing_projects) {
         let firstProjectID = 0;
@@ -49,7 +49,7 @@ export default React.createClass({
         return {
             projectId: projectId,
             projects: projects,
-            existing: existing_projects,
+            existing: existing_projects
         }
     },
     updateState: function() {

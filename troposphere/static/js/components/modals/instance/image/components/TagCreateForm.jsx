@@ -13,7 +13,7 @@ export default React.createClass({
             newTagDescription,
             newTagName,
             onNewTagDescriptionChange,
-            onNewTagNameChange,
+            onNewTagNameChange
 
         } = this.props;
 
@@ -59,5 +59,5 @@ export default React.createClass({
             />
         </div>
         );
-    },
+    }
 });

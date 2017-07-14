@@ -15,7 +15,7 @@ export default React.createClass({
             scriptTitle: this.props.scriptTitle || "",
             scriptType: "URL",
             scriptURL: "",
-            scriptText: "",
+            scriptText: ""
         }
     },
     isSubmittable: function() {

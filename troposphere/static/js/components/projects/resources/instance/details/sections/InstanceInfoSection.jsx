@@ -45,7 +45,7 @@ export default React.createClass({
             });
             this.setState({
                 isEditing: false,
-                name: text,
+                name: text
             });
         }
     },

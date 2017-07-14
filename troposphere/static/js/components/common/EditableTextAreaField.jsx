@@ -8,7 +8,7 @@ export default React.createClass({
 
     propTypes: {
         onDoneEditing: React.PropTypes.func,
-        text: React.PropTypes.string,
+        text: React.PropTypes.string
     },
 
     componentDidMount: function() {

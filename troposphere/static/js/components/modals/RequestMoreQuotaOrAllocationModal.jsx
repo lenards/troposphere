@@ -128,7 +128,7 @@ export default React.createClass({
 
     renderSelectRequestType() {
         let divStyle = {
-                padding: "5px 0px 5px 25px",
+                padding: "5px 0px 5px 25px"
             };
         return (
         <div role="form">

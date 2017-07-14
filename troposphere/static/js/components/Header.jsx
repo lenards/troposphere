@@ -20,7 +20,7 @@ const links = [
         linksTo: "dashboard",
         href: "/application/dashboard",
         icon: "stats",
-        requiresLogin: true,
+        requiresLogin: true
     },
     {
         name: "Projects",
@@ -35,7 +35,7 @@ const links = [
         href: "/application/images",
         icon: "floppy-disk",
         requiresLogin: false
-    },
+    }
     /* TODO: make this enabled/disabled based on `featureFlags.showIdentityView()`
     {
         name: "Identities",

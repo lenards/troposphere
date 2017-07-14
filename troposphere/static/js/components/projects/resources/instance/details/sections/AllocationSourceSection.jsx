@@ -33,7 +33,7 @@ export default React.createClass({
 
         return {
             allocationId,
-        }
+        };
     },
 
     onSourceChange: function(allocationSource) {
