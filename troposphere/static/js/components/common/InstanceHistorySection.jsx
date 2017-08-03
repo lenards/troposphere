@@ -111,17 +111,8 @@ var InstanceHistorySection = React.createClass({
     },
     render: function() {
         var instance = this.props.instance;
-        var content,
-            items,
-            deletedInfo;
+        var content;
 
-        if (instance.get("end_date")) {
-            deletedInfo = (
-                <lh>
-                    <strong>{"Deleted on " + moment(instance.get("end_date")).format("MMMM Do YYYY, h:mm a")}</strong>
-                </lh>
-            );
-        }
         if (!this.state.instanceHistory) {
             if (stores.InstanceHistoryStore.isFetching) {
                 content = (

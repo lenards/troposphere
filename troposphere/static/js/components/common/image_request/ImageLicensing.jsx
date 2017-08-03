@@ -17,7 +17,7 @@ export default React.createClass({
         });
     },
     removeLicenseFromList: function(license_id) {
-        console.log("Remove", license_id);
+        // console.log("Remove", license_id);
     },
     renderForm: function() {
         return (
