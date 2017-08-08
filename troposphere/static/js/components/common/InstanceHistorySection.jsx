@@ -144,7 +144,7 @@ var InstanceHistorySection = React.createClass({
         }
         return (
         <div className="resource-details-section section">
-            <h4 className="t-headline">Instance Status History {this.renderRefreshButton()}</h4>
+            <h4 className="t-title">Instance Status History {this.renderRefreshButton()}</h4>
             {content}
         </div>
         );
