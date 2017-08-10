@@ -83,6 +83,7 @@ const InstanceHistorySection = React.createClass({
         stores.InstanceStore.removeChangeListener(this.onNewData);
         stores.InstanceHistoryStore.removeChangeListener(this.requestListener);
     },
+
     requestListener() {
         this.setState({
             refreshing: false
@@ -95,6 +96,18 @@ const InstanceHistorySection = React.createClass({
                 "instance": this.props.instance.id
             })
         });
+    },
+
+    onRefresh() {
+        stores.InstanceHistoryStore.clearCache();
+        let instanceHistory = stores.InstanceHistoryStore.fetchWhere({
+            "instance": this.props.instance.id
+        })
+        this.setState({
+            refreshing: true,
+            instanceHistory
+        });
+
     },
 
     style() {
@@ -127,24 +140,24 @@ const InstanceHistorySection = React.createClass({
         );
     },
 
-    render: function() {
-        var instance = this.props.instance;
-        var content;
+    renderHistoryTable() {
+        let { instanceHistory } = this.state,
+            tableContent;
 
-        if (!this.state.instanceHistory) {
+        if (!instanceHistory) {
             if (stores.InstanceHistoryStore.isFetching) {
-                content = (
+                tableContent = (
                     <div className="loading" />
                 );
             } else {
-                content = (
+                tableContent = (
                     <div>
                         {"Error loading instance history. Please try again later."}
                     </div>
                 );
             }
         } else {
-            content = (
+            tableContent = (
                 <table className="clearfix table" style={{ tableLayout: "fixed" }}>
                     <thead>
                         <tr>
@@ -155,15 +168,19 @@ const InstanceHistorySection = React.createClass({
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.instanceHistory.map(this.renderHistoryRow) }
+                        {instanceHistory.map(this.renderHistoryRow) }
                     </tbody>
                 </table>
             );
         }
+        return tableContent;
+    },
+
+    render: function() {
         return (
         <div className="resource-details-section section">
             <h4 className="t-title">Instance Status History {this.renderRefreshButton()}</h4>
-            {content}
+            {this.renderHistoryTable()}
         </div>
         );
     }
