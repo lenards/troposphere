@@ -11,7 +11,7 @@ const HistoryRow = React.createClass({
        historyItem: React.PropTypes.instanceOf(Backbone.Model).isRequired
     },
 
-    renderFormattedExtraLines(isStaff, extra) {
+    renderFormattedExtraLines(isStaffUser, extra) {
         let formattedExtra = "";
         let formattedExtraLines = [];
         let show_traceback = (isStaffUser || context.hasEmulatedSession());
