@@ -5,7 +5,7 @@ import context from "context";
 import moment from "moment";
 
 
-var InstanceHistorySection = React.createClass({
+const InstanceHistorySection = React.createClass({
     displayName: "InstanceHistorySection",
 
     propTypes: {
@@ -98,6 +98,7 @@ var InstanceHistorySection = React.createClass({
                     </td>
                 </tr>);
     },
+
     onRefresh() {
         stores.InstanceHistoryStore.clearCache();
         let instanceHistory = stores.InstanceHistoryStore.fetchWhere({
@@ -109,6 +110,7 @@ var InstanceHistorySection = React.createClass({
         });
 
     },
+
     render: function() {
         var instance = this.props.instance;
         var content;
