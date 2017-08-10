@@ -4,6 +4,57 @@ import stores from "stores";
 import context from "context";
 import moment from "moment";
 
+const HistoryRow = React.createClass({
+    displayName: "HistoryRow",
+
+    propTypes: {
+       historyItem: React.PropTypes.instanceOf(Backbone.Model).isRequired
+    },
+
+    renderFormattedExtraLines(isStaff, extra) {
+        let formattedExtra = "";
+        let formattedExtraLines = [];
+        let show_traceback = (isStaffUser || context.hasEmulatedSession());
+
+        if(extra && 'display_error' in extra) {
+            formattedExtra = extra['display_error'];
+            if('traceback' in extra && show_traceback) {
+                formattedExtra = formattedExtra + "\\n" + extra['traceback']
+                formattedExtraLines = formattedExtra.split('\\n');
+            }
+        }
+        return formattedExtraLines.map(
+            (strng, idx) => (<p key={idx}>{strng}</p>)
+        );
+    },
+
+    render() {
+        let { historyItem } = this.props;
+
+        let profile = stores.ProfileStore.get();
+        let isStaffUser = (profile) ? profile.get("is_staff") : false;
+        let extra = historyItem.get('extra'),
+            formattedStartDate = moment(historyItem.get("start_date")).format("MMMM Do YYYY, h:mm a"),
+            formattedEndDate = "Present";
+
+        if (historyItem.get("end_date") && historyItem.get("end_date").isValid()) {
+            formattedEndDate = moment(historyItem.get("end_date")).format("MMMM Do YYYY, h:mm a");
+        }
+
+        return (
+            <tr key={historyItem.cid}>
+                <td>{historyItem.get("status")}</td>
+                <td>{formattedStartDate}</td>
+                <td>{formattedEndDate}</td>
+                <td>
+                    {this.renderFormattedExtraLines(isStaffUser, extra)}
+                </td>
+            </tr>
+        );
+
+    }
+});
+
 
 const InstanceHistorySection = React.createClass({
     displayName: "InstanceHistorySection",
@@ -70,45 +121,10 @@ const InstanceHistorySection = React.createClass({
         );
     },
 
-    renderHistoryRow: function(historyItem) {
-        let profile = stores.ProfileStore.get();
-        let is_staff_user = (profile) ? profile.get("is_staff") : false;
-        let extra = historyItem.get('extra'),
-            formattedStartDate = moment(historyItem.get("start_date")).format("MMMM Do YYYY, h:mm a"),
-            formattedEndDate = "Present";
-        if (historyItem.get("end_date") && historyItem.get("end_date").isValid()) {
-            formattedEndDate = moment(historyItem.get("end_date")).format("MMMM Do YYYY, h:mm a");
-        }
-        let formattedExtra = "";
-        let formattedExtraLines = [];
-        let show_traceback = (is_staff_user || context.hasEmulatedSession() );
-        if(extra && 'display_error' in extra) {
-            formattedExtra = extra['display_error'];
-            if('traceback' in extra && show_traceback) {
-                formattedExtra = formattedExtra + "\\n" + extra['traceback']
-                formattedExtraLines = formattedExtra.split('\\n');
-            }
-        }
-        return (<tr key={historyItem.cid}>
-                    <td>{historyItem.get("status")}</td>
-                    <td>{formattedStartDate}</td>
-                    <td>{formattedEndDate}</td>
-                    <td>{formattedExtraLines.map(
-                        (strng, idx) => (<p key={idx}>{strng}</p>)) }
-                    </td>
-                </tr>);
-    },
-
-    onRefresh() {
-        stores.InstanceHistoryStore.clearCache();
-        let instanceHistory = stores.InstanceHistoryStore.fetchWhere({
-            "instance": this.props.instance.id
-        })
-        this.setState({
-            refreshing: true,
-            instanceHistory
-        });
-
+    renderHistoryRow(historyItem) {
+        return (
+            <HistoryRow historyItem={historyItem} />
+        );
     },
 
     render: function() {
